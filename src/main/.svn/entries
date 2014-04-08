@@ -1,37 +1,0 @@
-10
-
-dir
-166
-http://svn.ti.lemaf.ufla.br/svn/tramitacao/src/trunk/Tramitacao/src/main
-http://svn.ti.lemaf.ufla.br/svn/tramitacao
-
-
-
-2013-08-01T14:17:47.792106Z
-166
-jesse
-
-
-svn:special svn:externals svn:needs-lock
-
-
-
-
-
-
-
-
-
-
-
-2b8923e2-c4ec-4365-a792-bca67669377d
-
-java
-dir
-
-resources
-dir
-
-webapp
-dir
-

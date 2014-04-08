@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/tramitacao/!svn/ver/166/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl
+END
+FluxoRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/tramitacao/!svn/ver/130/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/FluxoRepositoryImpl.java
+END
+StatusRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/tramitacao/!svn/ver/130/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/StatusRepositoryImpl.java
+END
+ConfigImpedimentoRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svn/tramitacao/!svn/ver/130/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/ConfigImpedimentoRepositoryImpl.java
+END
+AcaoRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/tramitacao/!svn/ver/130/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/AcaoRepositoryImpl.java
+END
+TransicaoRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svn/tramitacao/!svn/ver/166/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/TransicaoRepositoryImpl.java
+END
+UsuarioInternoRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svn/tramitacao/!svn/ver/161/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/UsuarioInternoRepositoryImpl.java
+END
+TipoObjetoTramitavelRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/svn/tramitacao/!svn/ver/130/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/TipoObjetoTramitavelRepositoryImpl.java
+END
+ObjetoTramitavelRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svn/tramitacao/!svn/ver/130/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/ObjetoTramitavelRepositoryImpl.java
+END
+HistoricoObjTramitavelRepositoryImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svn/tramitacao/!svn/ver/161/src/trunk/Tramitacao/src/main/java/br/ufla/lemaf/tramitacao/repository/impl/HistoricoObjTramitavelRepositoryImpl.java
+END

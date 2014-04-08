@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/tramitacao/!svn/ver/116/src/trunk/Tramitacao/src/main/webapp/WEB-INF/config
+END
+infrastructure-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/tramitacao/!svn/ver/116/src/trunk/Tramitacao/src/main/webapp/WEB-INF/config/infrastructure-config.xml
+END
+app-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tramitacao/!svn/ver/116/src/trunk/Tramitacao/src/main/webapp/WEB-INF/config/app-config.xml
+END
+mvc-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/tramitacao/!svn/ver/116/src/trunk/Tramitacao/src/main/webapp/WEB-INF/config/mvc-config.xml
+END

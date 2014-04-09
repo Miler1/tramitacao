@@ -399,12 +399,20 @@
         <scope>compile</scope>
     </dependency>
     
-    <!-- Oracle JDBC Driver -->
-		<dependency>
-			<groupId>com.oracle</groupId>
-			<artifactId>ojdbc14</artifactId>
-			<version>10.2.0.2.0</version>
-		</dependency>
+    <!-- Oracle JDBC Driver 
+	<dependency>
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc14</artifactId>
+		<version>10.2.0.2.0</version>
+	</dependency>
+	-->
+		
+	<!-- Postgres JDBC Driver -->
+	<dependency>
+	    <groupId>postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>9.1-901.jdbc4</version>
+	</dependency>
     
   </dependencies>
   <build>
@@ -419,6 +427,8 @@
 					<compilerArgument>-proc:none</compilerArgument>
 		</configuration>
       </plugin>
+      
+        
 	     <plugin>
 		    <groupId>org.codehaus.mojo</groupId>
 		    <artifactId>aspectj-maven-plugin</artifactId>
@@ -442,6 +452,7 @@
 		        </aspectLibraries>
 		    </configuration>
 		</plugin>
+		
 		<plugin>
 			<groupId>org.bsc.maven</groupId>
 			<artifactId>maven-processor-plugin</artifactId>

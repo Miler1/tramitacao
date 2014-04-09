@@ -16,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -92,13 +91,13 @@ public class ObjetoTramitavel implements Serializable {
 			   inverseJoinColumns = { @JoinColumn(name = "ID_SITUACAO", referencedColumnName = "ID_SITUACAO") } )
 	private Collection<Situacao> situacoes;
 	
-	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "ID_RESP_OBJETO_TRAMITAVEL", referencedColumnName = "ID_RESP_OBJETO_TRAMITAVEL")
-	private ResponsavelObjetoTramitavel responsavel;
-	
-	@OneToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "ID_RESP_OBJ_TRAMIT_ANTERIOR", referencedColumnName = "ID_RESP_OBJETO_TRAMITAVEL")
-	private ResponsavelObjetoTramitavel responsavelObjetoTramitavelAnterior;
+//	@OneToOne(cascade = {CascadeType.ALL})
+//	@JoinColumn(name = "ID_RESP_OBJETO_TRAMITAVEL", referencedColumnName = "ID_RESP_OBJETO_TRAMITAVEL")
+//	private ResponsavelObjetoTramitavel responsavel;
+//	
+//	@OneToOne(cascade = {CascadeType.ALL})
+//	@JoinColumn(name = "ID_RESP_OBJ_TRAMIT_ANTERIOR", referencedColumnName = "ID_RESP_OBJETO_TRAMITAVEL")
+//	private ResponsavelObjetoTramitavel responsavelObjetoTramitavelAnterior;
 	
 	@Transient
 	private Collection<HistoricoObjTramitavel> historico;
@@ -251,55 +250,55 @@ public class ObjetoTramitavel implements Serializable {
 		return acoesDisponiveis;
 	}
 	
-	public ResponsavelObjetoTramitavel getResponsavel() {
-		return responsavel;
-	}
-	
-	public ResponsavelObjetoTramitavel getResponsavelObjetoTramitavelAnterior() {
-		return responsavelObjetoTramitavelAnterior;
-	}
-	
-	private void setResponsavelObjetoTramitavelAnterior(ResponsavelObjetoTramitavel responsavel) {
-		
-		if ( this.responsavelObjetoTramitavelAnterior == null )
-			this.responsavelObjetoTramitavelAnterior = new ResponsavelObjetoTramitavel();
-		
-		if ( responsavel == null ) {
-			
-			this.responsavelObjetoTramitavelAnterior.limpar();
-			
-		} else {
-			
-			this.responsavelObjetoTramitavelAnterior.setGrupoUsuario( responsavel.getGrupoUsuario() );
-			this.responsavelObjetoTramitavelAnterior.setUnidadeAdministrativa( responsavel.getUnidadeAdministrativa() );
-			this.responsavelObjetoTramitavelAnterior.setOrgao( responsavel.getOrgao() );
-		}
-	}
-
-	public void setResponsavel(ResponsavelObjetoTramitavel novoResponsavel) {
-		
-		boolean alterouResponsavel = ( this.responsavel != null && !this.responsavel.equals(novoResponsavel)) ||
-									(novoResponsavel != null && !novoResponsavel.equals(this.responsavel) );
-
-		if ( !alterouResponsavel )
-			return;
-		
-		setResponsavelObjetoTramitavelAnterior( this.responsavel );
-		
-		if ( this.responsavel == null )
-			this.responsavel = new ResponsavelObjetoTramitavel();
-
-		if ( novoResponsavel == null ) {
-			
-			this.responsavel.limpar();
-			
-		} else {
-		
-			this.responsavel.setGrupoUsuario( novoResponsavel.getGrupoUsuario() );
-			this.responsavel.setUnidadeAdministrativa( novoResponsavel.getUnidadeAdministrativa() );
-			this.responsavel.setOrgao( novoResponsavel.getOrgao() );
-		}
-	}
+//	public ResponsavelObjetoTramitavel getResponsavel() {
+//		return responsavel;
+//	}
+//	
+//	public ResponsavelObjetoTramitavel getResponsavelObjetoTramitavelAnterior() {
+//		return responsavelObjetoTramitavelAnterior;
+//	}
+//	
+//	private void setResponsavelObjetoTramitavelAnterior(ResponsavelObjetoTramitavel responsavel) {
+//		
+//		if ( this.responsavelObjetoTramitavelAnterior == null )
+//			this.responsavelObjetoTramitavelAnterior = new ResponsavelObjetoTramitavel();
+//		
+//		if ( responsavel == null ) {
+//			
+//			this.responsavelObjetoTramitavelAnterior.limpar();
+//			
+//		} else {
+//			
+//			this.responsavelObjetoTramitavelAnterior.setGrupoUsuario( responsavel.getGrupoUsuario() );
+//			this.responsavelObjetoTramitavelAnterior.setUnidadeAdministrativa( responsavel.getUnidadeAdministrativa() );
+//			this.responsavelObjetoTramitavelAnterior.setOrgao( responsavel.getOrgao() );
+//		}
+//	}
+//
+//	public void setResponsavel(ResponsavelObjetoTramitavel novoResponsavel) {
+//		
+//		boolean alterouResponsavel = ( this.responsavel != null && !this.responsavel.equals(novoResponsavel)) ||
+//									(novoResponsavel != null && !novoResponsavel.equals(this.responsavel) );
+//
+//		if ( !alterouResponsavel )
+//			return;
+//		
+//		setResponsavelObjetoTramitavelAnterior( this.responsavel );
+//		
+//		if ( this.responsavel == null )
+//			this.responsavel = new ResponsavelObjetoTramitavel();
+//
+//		if ( novoResponsavel == null ) {
+//			
+//			this.responsavel.limpar();
+//			
+//		} else {
+//		
+//			this.responsavel.setGrupoUsuario( novoResponsavel.getGrupoUsuario() );
+//			this.responsavel.setUnidadeAdministrativa( novoResponsavel.getUnidadeAdministrativa() );
+//			this.responsavel.setOrgao( novoResponsavel.getOrgao() );
+//		}
+//	}
 
 	public void adicionarSituacao(Situacao situacao) {
 		
@@ -325,8 +324,8 @@ public class ObjetoTramitavel implements Serializable {
 		setStatus(novoStatus);
 		setUsuario(novoResponsavel);
 		
-		if (responsavel != null)
-			responsavel.limpar();
+//		if (responsavel != null)
+//			responsavel.limpar();
 	}
 	
 	@Override

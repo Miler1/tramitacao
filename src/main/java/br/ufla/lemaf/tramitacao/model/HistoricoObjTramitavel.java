@@ -20,9 +20,6 @@ import javax.validation.constraints.Size;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import br.ufla.lemaf.tramitacao.model.mbpo.GrupoUsuario;
-import br.ufla.lemaf.tramitacao.model.mbpu.Orgao;
-import br.ufla.lemaf.tramitacao.model.mbpu.UnidadeAdministrativa;
 import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
 import br.ufla.lemaf.tramitacao.util.DateTimeSerializer;
 
@@ -85,23 +82,23 @@ public class HistoricoObjTramitavel implements Serializable {
 	@Column(name = "TX_USUARIO_DESTINO")
 	private String nomeUsuarioDestino;
 	
-	@Column(name = "ID_GRUPO_USUARIO_DESTINO")
-	private Long idGrupoUsuarioDestino;
-	
-	@Column(name = "TX_GRUPO_USUARIO_DESTINO")
-	private String nomeGrupoUsuarioDestino;
-	
-	@Column(name = "ID_UNIDADE_ADM_DESTINO")
-	private Long idUnidadeAdministrativaDestino;
-	
-	@Column(name = "TX_UNIDADE_ADM_DESTINO")
-	private String nomeUnidadeAdministrativaDestino;
-	
-	@Column(name = "ID_ORGAO_DESTINO")
-	private Long idOrgaoDestino;
-	
-	@Column(name = "TX_ORGAO_DESTINO")
-	private String nomeOrgaoDestino;
+//	@Column(name = "ID_GRUPO_USUARIO_DESTINO")
+//	private Long idGrupoUsuarioDestino;
+//	
+//	@Column(name = "TX_GRUPO_USUARIO_DESTINO")
+//	private String nomeGrupoUsuarioDestino;
+//	
+//	@Column(name = "ID_UNIDADE_ADM_DESTINO")
+//	private Long idUnidadeAdministrativaDestino;
+//	
+//	@Column(name = "TX_UNIDADE_ADM_DESTINO")
+//	private String nomeUnidadeAdministrativaDestino;
+//	
+//	@Column(name = "ID_ORGAO_DESTINO")
+//	private Long idOrgaoDestino;
+//	
+//	@Column(name = "TX_ORGAO_DESTINO")
+//	private String nomeOrgaoDestino;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "DT_CADASTRO")
@@ -116,7 +113,8 @@ public class HistoricoObjTramitavel implements Serializable {
 	}
 
 	public HistoricoObjTramitavel(ObjetoTramitavel objetoTramitavel, Acao acao, Status statusInicial, Status statusFinal,
-			UsuarioInterno usuarioExecutor, UsuarioInterno usuarioDestino, ResponsavelObjetoTramitavel responsavelDestino,
+			UsuarioInterno usuarioExecutor, UsuarioInterno usuarioDestino, 
+			//ResponsavelObjetoTramitavel responsavelDestino,
 			Date dataCadastro, String observacao) {
 
 		super();
@@ -137,7 +135,7 @@ public class HistoricoObjTramitavel implements Serializable {
 		
 		setUsuario(usuarioExecutor);
 		setUsuarioDestino(usuarioDestino);
-		setResponsavelDestino(responsavelDestino);
+		//setResponsavelDestino(responsavelDestino);
 	}
 	
 	private void setUsuario(UsuarioInterno usuarioExecutor) {
@@ -158,30 +156,30 @@ public class HistoricoObjTramitavel implements Serializable {
 		}
 	}
 	
-	private void setResponsavelDestino(ResponsavelObjetoTramitavel responsavelDestino) {
-		
-		if (responsavelDestino != null) {
-			
-			GrupoUsuario grupoUsuarioDestino = responsavelDestino.getGrupoUsuario();
-			UnidadeAdministrativa unidadeAdmDestino = responsavelDestino.getUnidadeAdministrativa();
-			Orgao orgaoDestino = responsavelDestino.getOrgao();
-			
-			if (grupoUsuarioDestino != null) {
-				this.idGrupoUsuarioDestino = grupoUsuarioDestino.getId();
-				this.nomeGrupoUsuarioDestino = grupoUsuarioDestino.getDescricao();
-			}
-			
-			if (unidadeAdmDestino != null) {
-				this.idUnidadeAdministrativaDestino = unidadeAdmDestino.getId();
-				this.nomeUnidadeAdministrativaDestino = unidadeAdmDestino.getDescricao();
-			}
-			
-			if (orgaoDestino != null) {
-				this.idOrgaoDestino = orgaoDestino.getId();
-				this.nomeOrgaoDestino = orgaoDestino.getDescricao();
-			}
-		}
-	}
+//	private void setResponsavelDestino(ResponsavelObjetoTramitavel responsavelDestino) {
+//		
+//		if (responsavelDestino != null) {
+//			
+//			GrupoUsuario grupoUsuarioDestino = responsavelDestino.getGrupoUsuario();
+//			UnidadeAdministrativa unidadeAdmDestino = responsavelDestino.getUnidadeAdministrativa();
+//			Orgao orgaoDestino = responsavelDestino.getOrgao();
+//			
+//			if (grupoUsuarioDestino != null) {
+//				this.idGrupoUsuarioDestino = grupoUsuarioDestino.getId();
+//				this.nomeGrupoUsuarioDestino = grupoUsuarioDestino.getDescricao();
+//			}
+//			
+//			if (unidadeAdmDestino != null) {
+//				this.idUnidadeAdministrativaDestino = unidadeAdmDestino.getId();
+//				this.nomeUnidadeAdministrativaDestino = unidadeAdmDestino.getDescricao();
+//			}
+//			
+//			if (orgaoDestino != null) {
+//				this.idOrgaoDestino = orgaoDestino.getId();
+//				this.nomeOrgaoDestino = orgaoDestino.getDescricao();
+//			}
+//		}
+//	}
 
 	public Long getId() {
 		return id;
@@ -248,29 +246,29 @@ public class HistoricoObjTramitavel implements Serializable {
 		return nomeUsuarioDestino;
 	}
 
-	public Long getIdGrupoUsuarioDestino() {
-		return idGrupoUsuarioDestino;
-	}
-
-	public String getNomeGrupoUsuarioDestino() {
-		return nomeGrupoUsuarioDestino;
-	}
-
-	public Long getIdUnidadeAdministrativaDestino() {
-		return idUnidadeAdministrativaDestino;
-	}
-
-	public String getNomeUnidadeAdministrativaDestino() {
-		return nomeUnidadeAdministrativaDestino;
-	}
-
-	public Long getIdOrgaoDestino() {
-		return idOrgaoDestino;
-	}
-
-	public String getNomeOrgaoDestino() {
-		return nomeOrgaoDestino;
-	}
+//	public Long getIdGrupoUsuarioDestino() {
+//		return idGrupoUsuarioDestino;
+//	}
+//
+//	public String getNomeGrupoUsuarioDestino() {
+//		return nomeGrupoUsuarioDestino;
+//	}
+//
+//	public Long getIdUnidadeAdministrativaDestino() {
+//		return idUnidadeAdministrativaDestino;
+//	}
+//
+//	public String getNomeUnidadeAdministrativaDestino() {
+//		return nomeUnidadeAdministrativaDestino;
+//	}
+//
+//	public Long getIdOrgaoDestino() {
+//		return idOrgaoDestino;
+//	}
+//
+//	public String getNomeOrgaoDestino() {
+//		return nomeOrgaoDestino;
+//	}
 
 	@JsonSerialize(using = DateTimeSerializer.class)
 	public Date getDataCadastro() {

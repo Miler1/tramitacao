@@ -12,8 +12,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "EVENTO")
+@Table(name = "EVENTO", schema = SCHEMAS.TRAMITACAO)
 public class Evento implements Serializable {
 
 	private static final long serialVersionUID = 1L;

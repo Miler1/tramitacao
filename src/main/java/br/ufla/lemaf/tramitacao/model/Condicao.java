@@ -14,37 +14,39 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table( name = "STATUS" )
-public class Status implements Serializable {
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
-	public static final Status INITIAL_PSEUDO_STATE = new Status( Long.valueOf( 0 ) );
+@Entity
+@Table(name = "CONDICAO", schema = SCHEMAS.TRAMITACAO)
+public class Condicao implements Serializable {
+
+	public static final Condicao INITIAL_PSEUDO_STATE = new Condicao( Long.valueOf( 0 ) );
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@NotNull
-	@Column( name = "ID_STATUS" )
-	@GeneratedValue( strategy = GenerationType.AUTO, generator = "SEQ_STATUS" )
-	@SequenceGenerator( name = "SEQ_STATUS", sequenceName = "SEQ_STATUS" )
+	@Column( name = "ID_CONDICAO" )
+	@GeneratedValue( strategy = GenerationType.AUTO, generator = "CONDICAO_ID_CONDICAO_SEQ" )
+	@SequenceGenerator( name = "CONDICAO_ID_CONDICAO_SEQ", sequenceName = "CONDICAO_ID_CONDICAO_SEQ" )
 	private Long id;
 
 	@ManyToOne
 	@JoinColumn( name = "ID_ETAPA", referencedColumnName = "ID_ETAPA" )
 	private Etapa etapa;
 
-	@Column( name = "NM_STATUS" )
+	@Column( name = "NM_CONDICAO" )
 	@Size( max = 100 )
 	private String nome;
 
 	@Column( name = "FL_ATIVO" )
 	private Integer ativo;
 
-	public Status() {
+	public Condicao() {
 
 	}
 
-	public Status( Long id ) {
+	public Condicao( Long id ) {
 		this.id = id;
 	}
 
@@ -64,7 +66,7 @@ public class Status implements Serializable {
 		return ativo;
 	}
 	
-	public boolean isStatusOutroFluxo(Status novoStatus) {
+	public boolean isStatusOutroFluxo(Condicao novoStatus) {
 		
 		if (this.etapa == null || novoStatus == null || novoStatus.getEtapa() == null)
 			return false;
@@ -85,7 +87,7 @@ public class Status implements Serializable {
 		if (obj == null || this.id == null || this.getClass() != obj.getClass())
 			return false;
 		
-		Status other = (Status) obj;
+		Condicao other = (Condicao) obj;
 		
 		return this.id.equals(other.id);
 	}

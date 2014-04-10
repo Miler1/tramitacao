@@ -15,8 +15,10 @@ import javax.validation.constraints.NotNull;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "CONFIG_SITUACAO")
+@Table(name = "CONFIG_SITUACAO", schema = SCHEMAS.TRAMITACAO)
 public class ConfigSituacao implements Serializable {
 
 	private static final long serialVersionUID = 1L;

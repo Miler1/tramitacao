@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.ufla.lemaf.tramitacao.model.Status;
-import br.ufla.lemaf.tramitacao.service.StatusService;
+import br.ufla.lemaf.tramitacao.model.Condicao;
+import br.ufla.lemaf.tramitacao.service.CondicaoService;
 
 @Controller
-@RequestMapping("/status/**")
-public class StatusController {
+@RequestMapping("/condicao/**")
+public class CondicaoController {
 	
 	@Autowired(required = true)
-	private StatusService statusService;
+	private CondicaoService condicaoService;
 	
 	// TODO Esse servico sera retirado no futuro, ele devera ser transformado em uma view com os status e fluxos
-	@RequestMapping(value = "/status/findByIdFluxo/{idFluxo}", method = RequestMethod.GET)
-	public List<Status> findByIdFluxo(@PathVariable Long idFluxo) {
-		return this.statusService.findByIdFluxo(idFluxo);
+	@RequestMapping(value = "/condicao/findByIdFluxo/{idFluxo}", method = RequestMethod.GET)
+	public List<Condicao> findByIdFluxo(@PathVariable Long idFluxo) {
+		return this.condicaoService.findByIdFluxo(idFluxo);
 	}
 
 }

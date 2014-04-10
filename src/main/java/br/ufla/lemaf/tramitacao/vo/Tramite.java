@@ -10,7 +10,7 @@ import br.ufla.lemaf.tramitacao.model.Fluxo;
 import br.ufla.lemaf.tramitacao.model.ObjetoTramitavel;
 import br.ufla.lemaf.tramitacao.model.TipoObjetoTramitavel;
 import br.ufla.lemaf.tramitacao.model.Transicao;
-import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
+import br.ufla.lemaf.tramitacao.model.usrgeocar.Usuario;
 import br.ufla.lemaf.tramitacao.util.Mensagem;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -31,7 +31,7 @@ public class Tramite implements Serializable {
 	private String observacao;
 	
 	/** usuário que executou a tramitação anterior. */
-	private UsuarioInterno ultimoUsuarioExecutor;
+	private Usuario ultimoUsuarioExecutor;
 	
 	private Transicao transicao;
 	
@@ -84,7 +84,7 @@ public class Tramite implements Serializable {
 		this.mensagem = mensagem;
 	}
 	
-	public Tramite(UsuarioInterno ultimoUsuarioExecutor) {
+	public Tramite(Usuario ultimoUsuarioExecutor) {
 		this.ultimoUsuarioExecutor = ultimoUsuarioExecutor;
 	}
 
@@ -136,11 +136,11 @@ public class Tramite implements Serializable {
 		return observacao;
 	}
 
-	public void setUltimoUsuarioExecutor(UsuarioInterno ultimoUsuarioExecutor) {
+	public void setUltimoUsuarioExecutor(Usuario ultimoUsuarioExecutor) {
 		this.ultimoUsuarioExecutor = ultimoUsuarioExecutor;
 	}
 
-	public UsuarioInterno getUltimoUsuarioExecutor() {
+	public Usuario getUltimoUsuarioExecutor() {
 		return ultimoUsuarioExecutor;
 	}
 

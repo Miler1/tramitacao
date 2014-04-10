@@ -1,4 +1,4 @@
-package br.ufla.lemaf.tramitacao.model.mbpu;
+package br.ufla.lemaf.tramitacao.model.usrgeocar;
 
 import java.io.Serializable;
 
@@ -16,8 +16,8 @@ import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table(name = "TB_USUARIO_INTERNO", catalog = "", schema = SCHEMAS.MBPU)
-public class UsuarioInterno implements Serializable {
+@Table(name = "USUARIO", catalog = "", schema = SCHEMAS.USR_GEOCAR_APLICACAO)
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -30,11 +30,11 @@ public class UsuarioInterno implements Serializable {
 	@JoinColumn(name = "ID_PESSOA_FISICA")
 	private Pessoa pessoa;
 
-	public UsuarioInterno() {
+	public Usuario() {
 		
 	}
 	
-	public UsuarioInterno(Long idPessoaFisica) {
+	public Usuario(Long idPessoaFisica) {
 		this.id = idPessoaFisica;
 	}
 	
@@ -68,7 +68,7 @@ public class UsuarioInterno implements Serializable {
 			return false;
 		if (this.getClass() != obj.getClass())
 			return false;
-		UsuarioInterno other = (UsuarioInterno) obj;
+		Usuario other = (Usuario) obj;
 		if (this.id == null) {
 			return false;
 		} else if (!this.id.equals(other.getId()))

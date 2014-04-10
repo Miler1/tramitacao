@@ -14,8 +14,10 @@ import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "ACAO")
+@Table(name = "ACAO", schema = SCHEMAS.TRAMITACAO)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Acao implements Serializable {
 

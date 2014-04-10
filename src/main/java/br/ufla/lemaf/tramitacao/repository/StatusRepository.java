@@ -2,10 +2,10 @@ package br.ufla.lemaf.tramitacao.repository;
 
 import java.util.List;
 
-import br.ufla.lemaf.tramitacao.model.Status;
+import br.ufla.lemaf.tramitacao.model.Condicao;
 
 public interface StatusRepository {
 
-	List<Status> findByIdFluxo(Long idFluxo);
+	List<Condicao> findByIdFluxo(Long idFluxo);
 	
 }

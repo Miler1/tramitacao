@@ -12,8 +12,10 @@ import javax.validation.constraints.NotNull;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "IMPEDIMENTO_TRANSICAO")
+@Table(name = "IMPEDIMENTO_TRANSICAO", schema = SCHEMAS.TRAMITACAO)
 public class Impedimento implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

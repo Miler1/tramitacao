@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import br.ufla.lemaf.tramitacao.graphviz.GraphViz;
 import br.ufla.lemaf.tramitacao.model.Fluxo;
-import br.ufla.lemaf.tramitacao.model.Status;
+import br.ufla.lemaf.tramitacao.model.Condicao;
 import br.ufla.lemaf.tramitacao.model.Transicao;
 import br.ufla.lemaf.tramitacao.repository.FluxoRepository;
 import br.ufla.lemaf.tramitacao.repository.TransicaoRepository;
@@ -41,16 +41,16 @@ public class FluxoService {
 		if (transicoes == null || transicoes.isEmpty())
 			return null;
 		
-		Collection<Status> statusSet = getStatusFromTransicoes(transicoes);
+		Collection<Condicao> statusSet = getStatusFromTransicoes(transicoes);
 		
 		GraphViz graph = generateGraph(transicoes, statusSet, printDotFile);
 
 		return graph.getGraph( graph.getDotSource(), GraphViz.OUTPUT_TYPE );
 	}
 	
-	private Collection<Status> getStatusFromTransicoes(List<Transicao> transicoes) {
+	private Collection<Condicao> getStatusFromTransicoes(List<Transicao> transicoes) {
 		
-		Set<Status> statusSet = new HashSet<Status>();
+		Set<Condicao> statusSet = new HashSet<Condicao>();
 		
 		for (Transicao transicao : transicoes) {
 			statusSet.add(transicao.getStatusInicial());
@@ -60,7 +60,7 @@ public class FluxoService {
 		return statusSet;
 	}
 	
-	private GraphViz generateGraph(Collection<Transicao> transicoes, Collection<Status> statusList, boolean printDotFile) {
+	private GraphViz generateGraph(Collection<Transicao> transicoes, Collection<Condicao> statusList, boolean printDotFile) {
 		
 		GraphViz graph = new GraphViz();
 		graph.addln(graph.start_graph());
@@ -72,9 +72,9 @@ public class FluxoService {
 		graph.addln("edge [style=bold];");			// estilo das acoes (arestas)
 		
 		// Gera os status (nos)
-		for (Status status : statusList) {
+		for (Condicao status : statusList) {
 			
-			String statusProp = (Status.INITIAL_PSEUDO_STATE.equals(status))
+			String statusProp = (Condicao.INITIAL_PSEUDO_STATE.equals(status))
 					? "[color=green, label=\"" + splitLines(status.getNome(), MAX_LINE_SIZE_LABEL_STATUS_GRAPH) + "\"]" // estilo do status inicial
 					: "[label=\"" + splitLines(status.getNome(), MAX_LINE_SIZE_LABEL_STATUS_GRAPH) + "\"]";
 			

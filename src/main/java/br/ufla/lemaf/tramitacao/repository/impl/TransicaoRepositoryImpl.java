@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import br.ufla.lemaf.tramitacao.consts.SimNao;
 import br.ufla.lemaf.tramitacao.model.Acao;
 import br.ufla.lemaf.tramitacao.model.Fluxo;
-import br.ufla.lemaf.tramitacao.model.Status;
+import br.ufla.lemaf.tramitacao.model.Condicao;
 import br.ufla.lemaf.tramitacao.model.Transicao;
 import br.ufla.lemaf.tramitacao.repository.TransicaoRepository;
 
@@ -38,7 +38,7 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 					"SELECT transicao FROM " + Transicao.class.getSimpleName() + " transicao" +
 							" WHERE transicao.statusInicial = :statusInicial" +
 							"   AND transicao.statusFinal = :statusFinal" )
-					.setParameter( "statusInicial", Status.INITIAL_PSEUDO_STATE )
+					.setParameter( "statusInicial", Condicao.INITIAL_PSEUDO_STATE )
 					.setParameter( "statusFinal", fluxo.getStatusInicial() )
 					.getSingleResult();
 
@@ -50,7 +50,7 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 
 	}
 
-	public Transicao findByStatusInicialAndAcao( Status statusInicial, Acao acao ) {
+	public Transicao findByStatusInicialAndAcao( Condicao statusInicial, Acao acao ) {
 
 		if ( statusInicial == null || acao == null )
 			return null;
@@ -73,12 +73,12 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 
 	}
 
-	public List<Transicao> findByStatusInicial( Status statusInicial, Integer apenasAcoesTramitaveis ) {
+	public List<Transicao> findByStatusInicial( Condicao statusInicial, Integer apenasAcoesTramitaveis ) {
 		return this.findBy( statusInicial, null, apenasAcoesTramitaveis );
 	}
 
 	@SuppressWarnings( "unchecked" )
-	public List<Transicao> findBy( Status statusInicial, Acao acao, Integer apenasAcoesTramitaveis ) {
+	public List<Transicao> findBy( Condicao statusInicial, Acao acao, Integer apenasAcoesTramitaveis ) {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		List<String> conditions = new ArrayList<String>();
@@ -166,7 +166,7 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 					"    AND fluxoFinal.id = :idFluxo" +
 					" ORDER BY transicao.id")
 					.setParameter("idFluxo", idFluxo)
-					.setParameter("statusInicial", Status.INITIAL_PSEUDO_STATE)
+					.setParameter("statusInicial", Condicao.INITIAL_PSEUDO_STATE)
 					.getResultList();
 			
 		} catch ( EmptyResultDataAccessException e ) {

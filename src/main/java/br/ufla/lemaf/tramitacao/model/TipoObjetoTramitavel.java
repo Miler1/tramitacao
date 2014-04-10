@@ -12,8 +12,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "TIPO_OBJETO_TRAMITAVEL")
+@Table(name = "TIPO_OBJETO_TRAMITAVEL", schema = SCHEMAS.TRAMITACAO)
 public class TipoObjetoTramitavel implements Serializable {
 
 	private static final long serialVersionUID = 1L;

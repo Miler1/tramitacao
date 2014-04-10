@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
-import br.ufla.lemaf.tramitacao.model.Status;
+import br.ufla.lemaf.tramitacao.model.Condicao;
 import br.ufla.lemaf.tramitacao.repository.StatusRepository;
 
 @Repository
@@ -19,15 +19,15 @@ public class StatusRepositoryImpl implements StatusRepository {
 	private EntityManager entityManager;
 
 	@SuppressWarnings("unchecked")
-	public List<Status> findByIdFluxo(Long idFluxo) {
+	public List<Condicao> findByIdFluxo(Long idFluxo) {
 
 		try {
 			
-			String jpql = "SELECT status FROM " + Status.class.getSimpleName()
+			String jpql = "SELECT status FROM " + Condicao.class.getSimpleName()
 					+ " status INNER JOIN status.etapa e INNER JOIN e.fluxo f"
 					+ " WHERE f.id = " + idFluxo;
 
-			return (List<Status>) entityManager.createQuery(jpql).getResultList();
+			return (List<Condicao>) entityManager.createQuery(jpql).getResultList();
 
 		} catch ( EmptyResultDataAccessException e ) {
 			return null;

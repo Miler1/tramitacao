@@ -16,8 +16,10 @@ import javax.validation.constraints.Size;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "FLUXO")
+@Table(name = "FLUXO", schema = SCHEMAS.TRAMITACAO)
 public class Fluxo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,8 +32,8 @@ public class Fluxo implements Serializable {
 	private Long id;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_STATUS_INICIAL", referencedColumnName = "ID_STATUS")
-	private Status statusInicial;
+	@JoinColumn(name = "ID_STATUS_INICIAL", referencedColumnName = "ID_CONDICAO")
+	private Condicao statusInicial;
 	
 	@Column(name = "TX_DESCRICAO")
 	@Size(max = 1000)
@@ -53,7 +55,7 @@ public class Fluxo implements Serializable {
 	}
 
 	@JsonIgnore
-	public Status getStatusInicial() {
+	public Condicao getStatusInicial() {
 		return statusInicial;
 	}
 
@@ -69,7 +71,7 @@ public class Fluxo implements Serializable {
 		this.id = id;
 	}
 
-	public void setStatusInicial(Status statusInicial) {
+	public void setStatusInicial(Condicao statusInicial) {
 		this.statusInicial = statusInicial;
 	}
 

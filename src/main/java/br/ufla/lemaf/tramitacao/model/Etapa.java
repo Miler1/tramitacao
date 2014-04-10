@@ -14,8 +14,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "ETAPA")
+@Table(name = "ETAPA", schema = SCHEMAS.TRAMITACAO)
 public class Etapa implements Serializable {
 
 	private static final long serialVersionUID = 1L;

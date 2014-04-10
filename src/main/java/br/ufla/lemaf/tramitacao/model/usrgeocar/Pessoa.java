@@ -1,4 +1,4 @@
-package br.ufla.lemaf.tramitacao.model.mbpu;
+package br.ufla.lemaf.tramitacao.model.usrgeocar;
 
 import java.io.Serializable;
 
@@ -11,17 +11,17 @@ import javax.validation.constraints.NotNull;
 import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
-@Table(name = "TB_PESSOA", catalog = "", schema = SCHEMAS.MBPU)
+@Table(name = "PESSOA", catalog = "", schema = SCHEMAS.USR_GEOCAR_APLICACAO)
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "ID")
+	@Column(name = "IDT_PESSOA")
 	@NotNull
 	private Long idPessoa;
 	
-	@Column(name = "NOME_RAZAO_SOCIAL")
+	@Column(name = "NOM_RAZAO_SOCIAL")
 	@NotNull
 	private String nomeRazaoSocial;
 	

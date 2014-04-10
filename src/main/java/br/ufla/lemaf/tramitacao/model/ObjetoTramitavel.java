@@ -27,12 +27,13 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+import br.ufla.lemaf.tramitacao.model.usrgeocar.Usuario;
 import br.ufla.lemaf.tramitacao.util.DateTimeDeserializer;
 import br.ufla.lemaf.tramitacao.util.DateTimeSerializer;
 
 @Entity
-@Table(name = "OBJETO_TRAMITAVEL")
+@Table(name = "OBJETO_TRAMITAVEL", schema = SCHEMAS.TRAMITACAO)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ObjetoTramitavel implements Serializable {
 
@@ -46,8 +47,8 @@ public class ObjetoTramitavel implements Serializable {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_STATUS", referencedColumnName = "ID_STATUS")
-	private Status status;
+	@JoinColumn(name = "ID_CONDICAO", referencedColumnName = "ID_CONDICAO")
+	private Condicao status;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_ETAPA", referencedColumnName = "ID_ETAPA")
@@ -67,7 +68,7 @@ public class ObjetoTramitavel implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_PESSOA_FISICA")
-	private UsuarioInterno usuario;
+	private Usuario usuario;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_PAI", referencedColumnName = "ID_OBJETO_TRAMITAVEL")
@@ -75,15 +76,15 @@ public class ObjetoTramitavel implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_RESPONSAVEL_ANTERIOR", referencedColumnName = "ID_PESSOA_FISICA")
-	private UsuarioInterno responsavelAnterior;
+	private Usuario responsavelAnterior;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_STATUS_FLUXO_ANTERIOR", referencedColumnName = "ID_STATUS")
-	private Status statusFluxoAnterior;
+	@JoinColumn(name = "ID_CONDICAO_FLUXO_ANTERIOR", referencedColumnName = "ID_CONDICAO")
+	private Condicao statusFluxoAnterior;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_RESPONSAVEL_FLUXO_ANTERIOR", referencedColumnName = "ID_PESSOA_FISICA")
-	private UsuarioInterno responsavelFluxoAnterior;
+	private Usuario responsavelFluxoAnterior;
 
 	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
 	@JoinTable(name = "REL_OBJETO_TRAMITAVEL_SITUACAO",
@@ -122,7 +123,7 @@ public class ObjetoTramitavel implements Serializable {
 		return id;
 	}
 
-	public Status getStatus() {
+	public Condicao getStatus() {
 		return status;
 	}
 
@@ -143,7 +144,7 @@ public class ObjetoTramitavel implements Serializable {
 		return dataCriacao;
 	}
 
-	public UsuarioInterno getUsuario() {
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
@@ -159,7 +160,7 @@ public class ObjetoTramitavel implements Serializable {
 		this.id = id;
 	}
 
-	public void setStatus(Status novoStatus) {
+	public void setStatus(Condicao novoStatus) {
 		
 		boolean alterouFluxo = this.status != null && this.status.isStatusOutroFluxo(novoStatus);
 		
@@ -191,7 +192,7 @@ public class ObjetoTramitavel implements Serializable {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public void setUsuario(UsuarioInterno novoUsuario) {
+	public void setUsuario(Usuario novoUsuario) {
 		
 		boolean alterouUsuarioResponsavel = (this.usuario != null && !this.usuario.equals(novoUsuario)) ||
 											(novoUsuario != null && !novoUsuario.equals(this.usuario));
@@ -206,27 +207,27 @@ public class ObjetoTramitavel implements Serializable {
 		this.pai = pai;
 	}
 
-	public UsuarioInterno getResponsavelAnterior() {
+	public Usuario getResponsavelAnterior() {
 		return responsavelAnterior;
 	}
 
-	private void setResponsavelAnterior(UsuarioInterno responsavelAnterior) {
+	private void setResponsavelAnterior(Usuario responsavelAnterior) {
 		this.responsavelAnterior = responsavelAnterior;
 	}
 
-	public Status getStatusFluxoAnterior() {
+	public Condicao getStatusFluxoAnterior() {
 		return statusFluxoAnterior;
 	}
 
-	public void setStatusFluxoAnterior(Status statusFluxoAnterior) {
+	public void setStatusFluxoAnterior(Condicao statusFluxoAnterior) {
 		this.statusFluxoAnterior = statusFluxoAnterior;
 	}
 
-	public UsuarioInterno getResponsavelFluxoAnterior() {
+	public Usuario getResponsavelFluxoAnterior() {
 		return responsavelFluxoAnterior;
 	}
 
-	public void setResponsavelFluxoAnterior(UsuarioInterno responsavelFluxoAnterior) {
+	public void setResponsavelFluxoAnterior(Usuario responsavelFluxoAnterior) {
 		this.responsavelFluxoAnterior = responsavelFluxoAnterior;
 	}
 
@@ -318,8 +319,8 @@ public class ObjetoTramitavel implements Serializable {
 	
 	public void setObjetoParaRetornarParaFluxoAnterior() {
 		
-		Status novoStatus = this.statusFluxoAnterior;
-		UsuarioInterno novoResponsavel = this.responsavelFluxoAnterior;
+		Condicao novoStatus = this.statusFluxoAnterior;
+		Usuario novoResponsavel = this.responsavelFluxoAnterior;
 		
 		setStatus(novoStatus);
 		setUsuario(novoResponsavel);

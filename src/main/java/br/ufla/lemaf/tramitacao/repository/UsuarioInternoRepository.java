@@ -1,9 +1,9 @@
 package br.ufla.lemaf.tramitacao.repository;
 
-import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
+import br.ufla.lemaf.tramitacao.model.usrgeocar.Usuario;
 
 public interface UsuarioInternoRepository {
 	
-	UsuarioInterno findById(Long id);
+	Usuario findById(Long id);
 
 }

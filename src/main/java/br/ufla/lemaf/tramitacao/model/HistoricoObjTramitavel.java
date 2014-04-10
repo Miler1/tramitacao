@@ -20,11 +20,12 @@ import javax.validation.constraints.Size;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
-import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+import br.ufla.lemaf.tramitacao.model.usrgeocar.Usuario;
 import br.ufla.lemaf.tramitacao.util.DateTimeSerializer;
 
 @Entity
-@Table(name = "HISTORICO_OBJETO_TRAMITAVEL")
+@Table(name = "HISTORICO_OBJETO_TRAMITAVEL", schema = SCHEMAS.TRAMITACAO)
 public class HistoricoObjTramitavel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,16 +47,16 @@ public class HistoricoObjTramitavel implements Serializable {
 	@Column(name = "TX_ACAO")
 	private String nomeAcao;
 	
-	@Column(name = "ID_STATUS_INICIAL")
+	@Column(name = "ID_CONDICAO_INICIAL")
 	private Long idStatusInicial;
 	
-	@Column(name = "TX_STATUS_INICIAL")
+	@Column(name = "TX_CONDICAO_INICIAL")
 	private String nomeStatusInicial;
 
-	@Column(name = "ID_STATUS_FINAL")
+	@Column(name = "ID_CONDICAO_FINAL")
 	private Long idStatusFinal;
 	
-	@Column(name = "TX_STATUS_FINAL")
+	@Column(name = "TX_CONDICAO_FINAL")
 	private String nomeStatusFinal;
 	
 	@Column(name = "ID_ETAPA_INICIAL")
@@ -112,8 +113,8 @@ public class HistoricoObjTramitavel implements Serializable {
 		super();
 	}
 
-	public HistoricoObjTramitavel(ObjetoTramitavel objetoTramitavel, Acao acao, Status statusInicial, Status statusFinal,
-			UsuarioInterno usuarioExecutor, UsuarioInterno usuarioDestino, 
+	public HistoricoObjTramitavel(ObjetoTramitavel objetoTramitavel, Acao acao, Condicao statusInicial, Condicao statusFinal,
+			Usuario usuarioExecutor, Usuario usuarioDestino, 
 			//ResponsavelObjetoTramitavel responsavelDestino,
 			Date dataCadastro, String observacao) {
 
@@ -138,7 +139,7 @@ public class HistoricoObjTramitavel implements Serializable {
 		//setResponsavelDestino(responsavelDestino);
 	}
 	
-	private void setUsuario(UsuarioInterno usuarioExecutor) {
+	private void setUsuario(Usuario usuarioExecutor) {
 		
 		if (usuarioExecutor != null && usuarioExecutor.getPessoa() != null) {
 			
@@ -147,7 +148,7 @@ public class HistoricoObjTramitavel implements Serializable {
 		}
 	}
 	
-	private void setUsuarioDestino(UsuarioInterno usuarioDestino) {
+	private void setUsuarioDestino(Usuario usuarioDestino) {
 		
 		if (usuarioDestino != null && usuarioDestino.getPessoa() != null) {
 			

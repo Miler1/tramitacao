@@ -17,8 +17,10 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
+
 @Entity
-@Table(name = "REL_SITUACAO_HISTORICO_TRANSIC")
+@Table(name = "REL_SITUACAO_HISTORICO_TRANSIC", schema = SCHEMAS.TRAMITACAO)
 public class SituacaoHistoricoTransicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -20,10 +20,11 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 import br.ufla.lemaf.tramitacao.consts.SimNao;
 
 @Entity
-@Table(name = "TRANSICAO")
+@Table(name = "TRANSICAO", schema = SCHEMAS.TRAMITACAO)
 public class Transicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -40,12 +41,12 @@ public class Transicao implements Serializable {
 	private Acao acao;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_STATUS_INICIAL", referencedColumnName = "ID_STATUS")
-	private Status statusInicial;
+	@JoinColumn(name = "ID_CONDICAO_INICIAL", referencedColumnName = "ID_CONDICAO")
+	private Condicao statusInicial;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_STATUS_FINAL", referencedColumnName = "ID_STATUS")
-	private Status statusFinal;
+	@JoinColumn(name = "ID_CONDICAO_FINAL", referencedColumnName = "ID_CONDICAO")
+	private Condicao statusFinal;
 	
 	@Column(name = "DT_PRAZO")
 	private Integer prazo;
@@ -73,11 +74,11 @@ public class Transicao implements Serializable {
 		return acao;
 	}
 
-	public Status getStatusInicial() {
+	public Condicao getStatusInicial() {
 		return statusInicial;
 	}
 
-	public Status getStatusFinal() {
+	public Condicao getStatusFinal() {
 		return statusFinal;
 	}
 

@@ -16,10 +16,10 @@ import br.ufla.lemaf.tramitacao.model.Fluxo;
 import br.ufla.lemaf.tramitacao.model.HistoricoObjTramitavel;
 import br.ufla.lemaf.tramitacao.model.Impedimento;
 import br.ufla.lemaf.tramitacao.model.ObjetoTramitavel;
-import br.ufla.lemaf.tramitacao.model.Status;
+import br.ufla.lemaf.tramitacao.model.Condicao;
 import br.ufla.lemaf.tramitacao.model.TipoObjetoTramitavel;
 import br.ufla.lemaf.tramitacao.model.Transicao;
-import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
+import br.ufla.lemaf.tramitacao.model.usrgeocar.Usuario;
 import br.ufla.lemaf.tramitacao.repository.ConfigImpedimentoRepository;
 import br.ufla.lemaf.tramitacao.repository.FluxoRepository;
 import br.ufla.lemaf.tramitacao.repository.TransicaoRepository;
@@ -111,13 +111,13 @@ public class TramiteService {
 //			objetoTramitavel.setResponsavel ( responsavel );
 			
 			if (tramite.possuiUsuarioDestino())
-				objetoTramitavel.setUsuario( new UsuarioInterno( tramite.getIdUsuarioDestino() ) );
+				objetoTramitavel.setUsuario( new Usuario( tramite.getIdUsuarioDestino() ) );
 			
 			objetoTramitavelService.save( objetoTramitavel );
 			
 		} else {
 
-			objetoTramitavel.setStatus( Status.INITIAL_PSEUDO_STATE );
+			objetoTramitavel.setStatus( Condicao.INITIAL_PSEUDO_STATE );
 			
 			objetoTramitavelService.save( objetoTramitavel );
 			
@@ -145,7 +145,7 @@ public class TramiteService {
 
 		} else {
 			
-			transicaoInicial = this.transicaoRepository.findByStatusInicialAndAcao( Status.INITIAL_PSEUDO_STATE, acao );
+			transicaoInicial = this.transicaoRepository.findByStatusInicialAndAcao( Condicao.INITIAL_PSEUDO_STATE, acao );
 			
 			ValidationUtil.idNotNull(transicaoInicial, String.format("A ação informada para iniciar a tramitação não é válida![idAcao=%d]" , acao.getId() ));
 		}
@@ -179,7 +179,7 @@ public class TramiteService {
 
 		if ( tramite.isRetornoParaUltimoResponsavel() ) {
 
-			UsuarioInterno ultimoResponsavel = objetoTramitavel.getResponsavelAnterior();
+			Usuario ultimoResponsavel = objetoTramitavel.getResponsavelAnterior();
 
 			tramite.setIdUsuarioDestino( (ultimoResponsavel == null) ? null : ultimoResponsavel.getId() );
 
@@ -207,7 +207,7 @@ public class TramiteService {
 		
 		adicionarRemoverSituacoesAoTramitar( objetoTramitavel, transicao );
 
-		UsuarioInterno usuarioExecutor = ( idUsuarioExecutor != null ) ? usuarioInternoRepository.findById( idUsuarioExecutor ) : null;
+		Usuario usuarioExecutor = ( idUsuarioExecutor != null ) ? usuarioInternoRepository.findById( idUsuarioExecutor ) : null;
 		
 		if (transicao.isRetornarFluxoAnterior()) {
 
@@ -315,7 +315,7 @@ public class TramiteService {
 		
 		if ( tramite.possuiUsuarioDestino() ) {
 			
-			UsuarioInterno usuarioResponsavel = usuarioInternoRepository.findById( tramite.getIdUsuarioDestino() );
+			Usuario usuarioResponsavel = usuarioInternoRepository.findById( tramite.getIdUsuarioDestino() );
 			ValidationUtil.idNotNull( usuarioResponsavel, "Não foi possível encontrar o usuário responsável informado." );
 		}
 	}
@@ -363,7 +363,7 @@ public class TramiteService {
 		ValidationUtil.notNull( tramite.getIdAcao(), "O identificador da ação a ser executada não foi informado corretamente." );
 		ValidationUtil.notNull( tramite.getIdUsuarioExecutor(), "O identificador do usuário executor não foi informado corretamente." );
 		
-		UsuarioInterno usuarioExecutor = usuarioInternoRepository.findById( tramite.getIdUsuarioExecutor() );
+		Usuario usuarioExecutor = usuarioInternoRepository.findById( tramite.getIdUsuarioExecutor() );
 		ValidationUtil.idNotNull( usuarioExecutor, "Não foi possível encontrar o usuário responsável executor informado." );
 		
 		if ( tramite.possuiUsuarioDestino() && ( tramite.possuiGrupoUsuarioDestino()
@@ -376,7 +376,7 @@ public class TramiteService {
 		
 		if ( tramite.possuiUsuarioDestino() ) {
 			
-			UsuarioInterno usuarioResponsavel = usuarioInternoRepository.findById( tramite.getIdUsuarioDestino() );
+			Usuario usuarioResponsavel = usuarioInternoRepository.findById( tramite.getIdUsuarioDestino() );
 			ValidationUtil.idNotNull( usuarioResponsavel, "Não foi possível encontrar o usuário responsável destino informado." );
 		}
 	}

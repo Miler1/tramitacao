@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
-import br.ufla.lemaf.tramitacao.model.mbpu.UsuarioInterno;
+import br.ufla.lemaf.tramitacao.model.usrgeocar.Usuario;
 import br.ufla.lemaf.tramitacao.repository.UsuarioInternoRepository;
 
 @Repository
@@ -16,15 +16,15 @@ public class UsuarioInternoRepositoryImpl implements UsuarioInternoRepository {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public UsuarioInterno findById(Long id) {
+	public Usuario findById(Long id) {
 		
 		if (id == null)
 			throw new IllegalArgumentException();
 		
 		try {
 			
-			return (UsuarioInterno) this.entityManager.createQuery(
-					"SELECT usuarioInterno FROM " + UsuarioInterno.class.getSimpleName() + " usuarioInterno" +
+			return (Usuario) this.entityManager.createQuery(
+					"SELECT usuarioInterno FROM " + Usuario.class.getSimpleName() + " usuarioInterno" +
 					" WHERE usuarioInterno.id = :id")
 					.setParameter("id", id)
 					.getSingleResult();

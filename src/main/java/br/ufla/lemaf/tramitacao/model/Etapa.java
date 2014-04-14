@@ -25,8 +25,8 @@ public class Etapa implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_ETAPA")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_ETAPA")
-	@SequenceGenerator(name = "SEQ_ETAPA", sequenceName = "SEQ_ETAPA")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.etapa_id_etapa_seq")
+	@SequenceGenerator(name = "tramitacao.etapa_id_etapa_seq", sequenceName = "tramitacao.etapa_id_etapa_seq")
 	private Long id;
 	
 	@ManyToOne

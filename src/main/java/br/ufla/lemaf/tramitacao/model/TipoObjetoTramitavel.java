@@ -23,8 +23,8 @@ public class TipoObjetoTramitavel implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_TIPO_OBJETO_TRAMITAVEL")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_TIPO_OBJETO_TRAMITAVEL")
-	@SequenceGenerator(name = "SEQ_TIPO_OBJETO_TRAMITAVEL", sequenceName = "SEQ_TIPO_OBJETO_TRAMITAVEL")
+	//@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_TIPO_OBJETO_TRAMITAVEL")
+	//@SequenceGenerator(name = "SEQ_TIPO_OBJETO_TRAMITAVEL", sequenceName = "SEQ_TIPO_OBJETO_TRAMITAVEL")
 	private Long id;
 	
 	@Column(name = "TX_DESCRICAO")

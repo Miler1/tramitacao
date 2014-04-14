@@ -26,8 +26,8 @@ public class Acao implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_ACAO")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_ACAO")
-	@SequenceGenerator(name = "SEQ_ACAO", sequenceName = "SEQ_ACAO")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.acao_id_acao_seq")
+	@SequenceGenerator(name = "tramitacao.acao_id_acao_seq", sequenceName = "tramitacao.acao_id_acao_seq")
 	private Long id;
 	
 	@Column(name = "TX_DESCRICAO")

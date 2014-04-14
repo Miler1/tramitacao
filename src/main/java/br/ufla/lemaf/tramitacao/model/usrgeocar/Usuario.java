@@ -22,12 +22,12 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "ID_PESSOA_FISICA")
+	@Column(name = "IDT_USUARIO")
 	@NotNull
 	private Long id;
 
 	@OneToOne
-	@JoinColumn(name = "ID_PESSOA_FISICA")
+	@JoinColumn(name = "IDT_PESSOA")
 	private Pessoa pessoa;
 
 	public Usuario() {

@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
-@Table(name = "REL_SITUACAO_HISTORICO_TRANSIC", schema = SCHEMAS.TRAMITACAO)
+@Table(name = "REL_SITUACAO_HISTORICO_TRANSICAO", schema = SCHEMAS.TRAMITACAO)
 public class SituacaoHistoricoTransicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -28,8 +28,8 @@ public class SituacaoHistoricoTransicao implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_REL_SITUACAO_HISTORICO_TRAN")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_REL_SIT_HISTORICO_TRANSIC")
-	@SequenceGenerator(name = "SEQ_REL_SIT_HISTORICO_TRANSIC", sequenceName = "SEQ_REL_SIT_HISTORICO_TRANSIC")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.REL_SITUACAO_HISTORICO_TRANSICAO_ID_REL_SITUACAO_HISTORICO_TRAN")
+	@SequenceGenerator(name = "tramitacao.REL_SITUACAO_HISTORICO_TRANSICAO_ID_REL_SITUACAO_HISTORICO_TRAN", sequenceName = "tramitacao.REL_SITUACAO_HISTORICO_TRANSICAO_ID_REL_SITUACAO_HISTORICO_TRAN")
 	private Long id;
 	
 	@ManyToOne
@@ -37,7 +37,7 @@ public class SituacaoHistoricoTransicao implements Serializable {
 	private Situacao situacao;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_HISTORICO_TRANSICAO", referencedColumnName = "ID_HISTORICO_OBJETO_TRAMITAVEL")
+	@JoinColumn(name = "ID_HISTORICO_OBJETO_TRAMITAVEL", referencedColumnName = "ID_HISTORICO_OBJETO_TRAMITAVEL")
 	private HistoricoObjTramitavel historicoTransicao;
 	
 	@Column(name = "DT_FINAL")
@@ -56,9 +56,9 @@ public class SituacaoHistoricoTransicao implements Serializable {
 		return situacao;
 	}
 
-	public HistoricoObjTramitavel getHistoricoTransicao() {
-		return historicoTransicao;
-	}
+//	public HistoricoObjTramitavel getHistoricoTransicao() {
+//		return historicoTransicao;
+//	}
 
 	public Date getDataFinal() {
 		return dataFinal;

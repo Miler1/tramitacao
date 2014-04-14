@@ -26,8 +26,8 @@ public class ConfigSituacao implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_CONFIG_SITUACAO")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CONFIG_IMPEDIMENTO")
-	@SequenceGenerator(name = "SEQ_CONFIG_IMPEDIMENTO", sequenceName = "SEQ_CONFIG_IMPEDIMENTO")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.config_situacao_id_config_situacao_seq")
+	@SequenceGenerator(name = "tramitacao.config_situacao_id_config_situacao_seq", sequenceName = "tramitacao.config_situacao_id_config_situacao_seq")
 	private Long id;
 	
 	@ManyToOne

@@ -27,8 +27,8 @@ public class Condicao implements Serializable {
 	@Id
 	@NotNull
 	@Column( name = "ID_CONDICAO" )
-	@GeneratedValue( strategy = GenerationType.AUTO, generator = "CONDICAO_ID_CONDICAO_SEQ" )
-	@SequenceGenerator( name = "CONDICAO_ID_CONDICAO_SEQ", sequenceName = "CONDICAO_ID_CONDICAO_SEQ" )
+	@GeneratedValue( strategy = GenerationType.AUTO, generator = "tramitacao.condicao_id_condicao_seq" )
+	@SequenceGenerator(name = "tramitacao.condicao_id_condicao_seq", sequenceName = "tramitacao.condicao_id_condicao_seq" )
 	private Long id;
 
 	@ManyToOne

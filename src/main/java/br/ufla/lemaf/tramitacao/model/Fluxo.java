@@ -27,8 +27,8 @@ public class Fluxo implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_FLUXO")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_FLUXO")
-	@SequenceGenerator(name = "SEQ_FLUXO", sequenceName = "SEQ_FLUXO")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.fluxo_id_fluxo_seq")
+	@SequenceGenerator(name = "tramitacao.fluxo_id_fluxo_seq", sequenceName = "tramitacao.fluxo_id_fluxo_seq")
 	private Long id;
 	
 	@OneToOne

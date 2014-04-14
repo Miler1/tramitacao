@@ -33,8 +33,8 @@ public class HistoricoObjTramitavel implements Serializable {
 	@Id
 	@Column(name = "ID_HISTORICO_OBJETO_TRAMITAVEL")
 	@NotNull
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_HIST_OBJETO_TRAMITAVEL")
-	@SequenceGenerator(name = "SEQ_HIST_OBJETO_TRAMITAVEL", sequenceName = "SEQ_HIST_OBJETO_TRAMITAVEL")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.historico_objeto_tramitavel_id_historico_objeto_tramitavel_seq")
+	@SequenceGenerator(name = "tramitacao.historico_objeto_tramitavel_id_historico_objeto_tramitavel_seq", sequenceName = "tramitacao.historico_objeto_tramitavel_id_historico_objeto_tramitavel_seq")
 	private Long id;
 	
 	@ManyToOne

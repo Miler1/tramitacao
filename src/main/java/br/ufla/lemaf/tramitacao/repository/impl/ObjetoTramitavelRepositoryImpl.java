@@ -21,6 +21,7 @@ public class ObjetoTramitavelRepositoryImpl implements ObjetoTramitavelRepositor
 	public void save( ObjetoTramitavel objetoTramitavel ) {
 
 		this.entityManager.persist( objetoTramitavel );
+		this.entityManager.flush();
 	}
 
 	public void update( ObjetoTramitavel objetoTramitavel ) {

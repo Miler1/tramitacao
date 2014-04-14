@@ -42,8 +42,8 @@ public class ObjetoTramitavel implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_OBJETO_TRAMITAVEL")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_OBJETO_TRAMITAVEL")
-	@SequenceGenerator(name = "SEQ_OBJETO_TRAMITAVEL", sequenceName = "SEQ_OBJETO_TRAMITAVEL")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.objeto_tramitavel_id_objeto_tramitavel_seq")
+	@SequenceGenerator(name = "tramitacao.objeto_tramitavel_id_objeto_tramitavel_seq", sequenceName = "tramitacao.objeto_tramitavel_id_objeto_tramitavel_seq")
 	private Long id;
 
 	@ManyToOne
@@ -67,7 +67,7 @@ public class ObjetoTramitavel implements Serializable {
 	private Date dataCriacao;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_PESSOA_FISICA")
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "IDT_USUARIO")
 	private Usuario usuario;
 
 	@ManyToOne
@@ -75,7 +75,7 @@ public class ObjetoTramitavel implements Serializable {
 	private ObjetoTramitavel pai;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_RESPONSAVEL_ANTERIOR", referencedColumnName = "ID_PESSOA_FISICA")
+	@JoinColumn(name = "ID_RESPONSAVEL_ANTERIOR", referencedColumnName = "IDT_USUARIO")
 	private Usuario responsavelAnterior;
 	
 	@ManyToOne
@@ -83,11 +83,11 @@ public class ObjetoTramitavel implements Serializable {
 	private Condicao statusFluxoAnterior;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_RESPONSAVEL_FLUXO_ANTERIOR", referencedColumnName = "ID_PESSOA_FISICA")
+	@JoinColumn(name = "ID_RESPONSAVEL_FLUXO_ANTERIOR", referencedColumnName = "IDT_USUARIO")
 	private Usuario responsavelFluxoAnterior;
 
 	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
-	@JoinTable(name = "REL_OBJETO_TRAMITAVEL_SITUACAO",
+	@JoinTable(schema = SCHEMAS.TRAMITACAO, name = "REL_OBJETO_TRAMITAVEL_SITUACAO",
 			   joinColumns = { @JoinColumn(name = "ID_OBJETO_TRAMITAVEL", referencedColumnName = "ID_OBJETO_TRAMITAVEL") },
 			   inverseJoinColumns = { @JoinColumn(name = "ID_SITUACAO", referencedColumnName = "ID_SITUACAO") } )
 	private Collection<Situacao> situacoes;

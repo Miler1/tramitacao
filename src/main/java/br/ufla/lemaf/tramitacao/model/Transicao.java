@@ -32,8 +32,8 @@ public class Transicao implements Serializable {
 	@Id
 	@NotNull
 	@Column(name = "ID_TRANSICAO")
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_TRANSICAO")
-	@SequenceGenerator(name = "SEQ_TRANSICAO", sequenceName = "SEQ_TRANSICAO")
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "tramitacao.transicao_id_transicao_seq")
+	@SequenceGenerator(name = "tramitacao.transicao_id_transicao_seq", sequenceName = "tramitacao.transicao_id_transicao_seq")
 	private Long id;
 	
 	@ManyToOne
@@ -55,7 +55,7 @@ public class Transicao implements Serializable {
 	private Integer retornarFluxoAnterior;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "REL_EVENTO_TRANSICAO",
+	@JoinTable(schema = SCHEMAS.TRAMITACAO, name = "REL_EVENTO_TRANSICAO",
 			joinColumns = { @JoinColumn(name = "ID_TRANSICAO", referencedColumnName = "ID_TRANSICAO") },
 			inverseJoinColumns = { @JoinColumn(name = "ID_EVENTO", referencedColumnName = "ID_EVENTO") } )
 	private Set<Evento> eventos;

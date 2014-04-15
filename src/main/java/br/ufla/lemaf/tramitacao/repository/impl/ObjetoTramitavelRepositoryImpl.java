@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Session;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
@@ -19,14 +20,20 @@ public class ObjetoTramitavelRepositoryImpl implements ObjetoTramitavelRepositor
 	private EntityManager entityManager;
 
 	public void save( ObjetoTramitavel objetoTramitavel ) {
-
-		this.entityManager.persist( objetoTramitavel );
-		this.entityManager.flush();
+		
+		//this.entityManager.persist( objetoTramitavel );
+		//this.entityManager.flush();
+		this.getSession().save(objetoTramitavel);
+		this.getSession().flush();
 	}
-
+	
+	private Session getSession(){
+		return ((Session) this.entityManager.getDelegate());
+	}
+	
 	public void update( ObjetoTramitavel objetoTramitavel ) {
-
-		this.entityManager.merge( objetoTramitavel );
+		this.getSession().saveOrUpdate(objetoTramitavel);
+		this.getSession().flush();
 
 	}
 	

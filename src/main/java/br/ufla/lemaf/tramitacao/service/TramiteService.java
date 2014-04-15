@@ -217,7 +217,7 @@ public class TramiteService {
 			
 			objetoTramitavel.setStatus( transicao.getStatusFinal() );
 			
-			//setResponsavelDoObjeto( objetoTramitavel, idUsuarioDestino, responsavelDestino );
+			setUsuarioDestino( objetoTramitavel, idUsuarioDestino );
 		}
 
 		historicoObjTramitavelService.save(new HistoricoObjTramitavel(objetoTramitavel,
@@ -229,19 +229,21 @@ public class TramiteService {
 			//objetoTramitavel.getResponsavel(),
 			new Date(),
 			observacao));
+		
+		objetoTramitavelService.update( objetoTramitavel );
+		
 	}
 	
-//	@Transactional
-//	private void setResponsavelDoObjeto( ObjetoTramitavel objetoTramitavel, Long idUsuarioDestino, ResponsavelObjetoTramitavel responsavel ) {
-//		
-//		if (idUsuarioDestino == null && responsavel == null)
-//			return;
-//		
-//		UsuarioInterno usuarioDestino = ( idUsuarioDestino != null ) ? usuarioInternoRepository.findById( idUsuarioDestino ) : null;
-//		objetoTramitavel.setUsuario( usuarioDestino );
-//		
-//		objetoTramitavel.setResponsavel( responsavel );
-//	}
+	@Transactional
+	private void setUsuarioDestino( ObjetoTramitavel objetoTramitavel, Long idUsuarioDestino ) {
+		
+		if (idUsuarioDestino == null)
+			return;
+		
+		Usuario usuarioDestino = ( idUsuarioDestino != null ) ? usuarioInternoRepository.findById( idUsuarioDestino ) : null;
+		objetoTramitavel.setUsuario( usuarioDestino );
+		
+	}
 
 	@Transactional
 	private void verificarImpedimentosTramite( ObjetoTramitavel objetoTramitavel, Transicao transicao ) {

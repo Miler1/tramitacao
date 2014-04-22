@@ -48,16 +48,16 @@ public class HistoricoObjTramitavel implements Serializable {
 	private String nomeAcao;
 	
 	@Column(name = "ID_CONDICAO_INICIAL")
-	private Long idStatusInicial;
+	private Long idCondicaoInicial;
 	
 	@Column(name = "TX_CONDICAO_INICIAL")
-	private String nomeStatusInicial;
+	private String nomeCondicaoInicial;
 
 	@Column(name = "ID_CONDICAO_FINAL")
-	private Long idStatusFinal;
+	private Long idCondicaoFinal;
 	
 	@Column(name = "TX_CONDICAO_FINAL")
-	private String nomeStatusFinal;
+	private String nomeCondicaoFinal;
 	
 	@Column(name = "ID_ETAPA_INICIAL")
 	private Long idEtapaInicial;
@@ -113,7 +113,7 @@ public class HistoricoObjTramitavel implements Serializable {
 		super();
 	}
 
-	public HistoricoObjTramitavel(ObjetoTramitavel objetoTramitavel, Acao acao, Condicao statusInicial, Condicao statusFinal,
+	public HistoricoObjTramitavel(ObjetoTramitavel objetoTramitavel, Acao acao, Condicao condicaoInicial, Condicao condicaoFinal,
 			Usuario usuarioExecutor, Usuario usuarioDestino, 
 			//ResponsavelObjetoTramitavel responsavelDestino,
 			Date dataCadastro, String observacao) {
@@ -123,14 +123,14 @@ public class HistoricoObjTramitavel implements Serializable {
 		this.objetoTramitavel = objetoTramitavel;
 		this.idAcao = acao.getId();
 		this.nomeAcao = acao.getDescricao();
-		this.idStatusInicial = statusInicial.getId();
-		this.nomeStatusInicial = statusInicial.getNome();
-		this.idStatusFinal = statusFinal.getId();
-		this.nomeStatusFinal = statusFinal.getNome();
-		this.idEtapaInicial = (statusInicial.getEtapa() == null) ? null : statusInicial.getEtapa().getId();
-		this.nomeEtapaInicial = (statusInicial.getEtapa() == null) ? null : statusInicial.getEtapa().getTexto();
-		this.idEtapaFinal = (statusFinal.getEtapa() == null) ? null : statusFinal.getEtapa().getId();
-		this.nomeEtapaFinal = (statusFinal.getEtapa() == null) ? null : statusFinal.getEtapa().getTexto();
+		this.idCondicaoInicial = condicaoInicial.getId();
+		this.nomeCondicaoInicial = condicaoInicial.getNome();
+		this.idCondicaoFinal = condicaoFinal.getId();
+		this.nomeCondicaoFinal = condicaoFinal.getNome();
+		this.idEtapaInicial = (condicaoInicial.getEtapa() == null) ? null : condicaoInicial.getEtapa().getId();
+		this.nomeEtapaInicial = (condicaoInicial.getEtapa() == null) ? null : condicaoInicial.getEtapa().getTexto();
+		this.idEtapaFinal = (condicaoFinal.getEtapa() == null) ? null : condicaoFinal.getEtapa().getId();
+		this.nomeEtapaFinal = (condicaoFinal.getEtapa() == null) ? null : condicaoFinal.getEtapa().getTexto();
 		this.dataCadastro = new Date();
 		this.observacao = observacao;
 		
@@ -199,20 +199,20 @@ public class HistoricoObjTramitavel implements Serializable {
 		return nomeAcao;
 	}
 
-	public Long getIdStatusInicial() {
-		return idStatusInicial;
+	public Long getIdCondicaoInicial() {
+		return idCondicaoInicial;
 	}
 
-	public String getNomeStatusInicial() {
-		return nomeStatusInicial;
+	public String getNomeCondicaoInicial() {
+		return nomeCondicaoInicial;
 	}
 
-	public Long getIdStatusFinal() {
-		return idStatusFinal;
+	public Long getIdCondicaoFinal() {
+		return idCondicaoFinal;
 	}
 
-	public String getNomeStatusFinal() {
-		return nomeStatusFinal;
+	public String getNomeCondicaoFinal() {
+		return nomeCondicaoFinal;
 	}
 	
 	public Long getIdEtapaInicial() {

@@ -32,8 +32,8 @@ public class Fluxo implements Serializable {
 	private Long id;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_STATUS_INICIAL", referencedColumnName = "ID_CONDICAO")
-	private Condicao statusInicial;
+	@JoinColumn(name = "ID_CONDICAO_INICIAL", referencedColumnName = "ID_CONDICAO")
+	private Condicao condicaoInicial;
 	
 	@Column(name = "TX_DESCRICAO")
 	@Size(max = 1000)
@@ -55,8 +55,8 @@ public class Fluxo implements Serializable {
 	}
 
 	@JsonIgnore
-	public Condicao getStatusInicial() {
-		return statusInicial;
+	public Condicao getCondicaoInicial() {
+		return condicaoInicial;
 	}
 
 	public String getDescricao() {
@@ -71,8 +71,8 @@ public class Fluxo implements Serializable {
 		this.id = id;
 	}
 
-	public void setStatusInicial(Condicao statusInicial) {
-		this.statusInicial = statusInicial;
+	public void setCondicaoInicial(Condicao condicaoInicial) {
+		this.condicaoInicial = condicaoInicial;
 	}
 
 	public void setDescricao(String descricao) {

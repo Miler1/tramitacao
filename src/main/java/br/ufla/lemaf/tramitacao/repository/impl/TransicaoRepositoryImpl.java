@@ -29,17 +29,17 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 
 	public Transicao findTransicaoInicial( Fluxo fluxo ) {
 
-		if ( fluxo == null || fluxo.getStatusInicial() == null )
+		if ( fluxo == null || fluxo.getCondicaoInicial() == null )
 			return null;
 
 		try {
 
 			return ( Transicao ) this.entityManager.createQuery(
 					"SELECT transicao FROM " + Transicao.class.getSimpleName() + " transicao" +
-							" WHERE transicao.statusInicial = :statusInicial" +
-							"   AND transicao.statusFinal = :statusFinal" )
-					.setParameter( "statusInicial", Condicao.INITIAL_PSEUDO_STATE )
-					.setParameter( "statusFinal", fluxo.getStatusInicial() )
+							" WHERE transicao.condicaoInicial = :condicaoInicial" +
+							"   AND transicao.condicaoFinal = :condicaoFinal" )
+					.setParameter( "condicaoInicial", Condicao.INITIAL_PSEUDO_STATE )
+					.setParameter( "condicaoFinal", fluxo.getCondicaoInicial() )
 					.getSingleResult();
 
 		} catch ( EmptyResultDataAccessException e ) {
@@ -50,18 +50,18 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 
 	}
 
-	public Transicao findByStatusInicialAndAcao( Condicao statusInicial, Acao acao ) {
+	public Transicao findByCondicaoInicialAndAcao( Condicao condicaoInicial, Acao acao ) {
 
-		if ( statusInicial == null || acao == null )
+		if ( condicaoInicial == null || acao == null )
 			return null;
 
 		try {
 
 			return ( Transicao ) this.entityManager.createQuery(
 					"SELECT transicao FROM " + Transicao.class.getSimpleName() + " transicao" +
-							" WHERE transicao.statusInicial = :statusInicial" +
+							" WHERE transicao.condicaoInicial = :condicaoInicial" +
 							"   AND transicao.acao = :acao" )
-					.setParameter( "statusInicial", statusInicial )
+					.setParameter( "condicaoInicial", condicaoInicial )
 					.setParameter( "acao", acao )
 					.getSingleResult();
 
@@ -73,25 +73,25 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 
 	}
 
-	public List<Transicao> findByStatusInicial( Condicao statusInicial, Integer apenasAcoesTramitaveis ) {
-		return this.findBy( statusInicial, null, apenasAcoesTramitaveis );
+	public List<Transicao> findByCondicaoInicial( Condicao condicaoInicial, Integer apenasAcoesTramitaveis ) {
+		return this.findBy( condicaoInicial, null, apenasAcoesTramitaveis );
 	}
 
 	@SuppressWarnings( "unchecked" )
-	public List<Transicao> findBy( Condicao statusInicial, Acao acao, Integer apenasAcoesTramitaveis ) {
+	public List<Transicao> findBy( Condicao condicaoInicial, Acao acao, Integer apenasAcoesTramitaveis ) {
 
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		List<String> conditions = new ArrayList<String>();
 
 		String jpql = "SELECT transicao FROM " + Transicao.class.getSimpleName() + " transicao";
 
-		if ( statusInicial != null && statusInicial.getId() != null ) {
+		if ( condicaoInicial != null && condicaoInicial.getId() != null ) {
 
-			conditions.add( "transicao.statusInicial = :statusInicial" );
-			conditions.add( "transicao.statusInicial.ativo = :ativoStatusInicial" );
+			conditions.add( "transicao.condicaoInicial = :condicaoInicial" );
+			conditions.add( "transicao.condicaoInicial.ativo = :ativoCondicaoInicial" );
 
-			parameters.put( "statusInicial", statusInicial );
-			parameters.put( "ativoStatusInicial", SimNao.SIM );
+			parameters.put( "condicaoInicial", condicaoInicial );
+			parameters.put( "ativoCondicaoInicial", SimNao.SIM );
 
 		}
 
@@ -155,18 +155,18 @@ public class TransicaoRepositoryImpl implements TransicaoRepository {
 			
 			return (List<Transicao>) entityManager.createQuery(
 					"SELECT transicao FROM " + Transicao.class.getSimpleName() + " transicao" +
-					" LEFT OUTER JOIN transicao.statusInicial statusInicial" +
-					" LEFT OUTER JOIN statusInicial.etapa etapaInicial" +
+					" LEFT OUTER JOIN transicao.condicaoInicial condicaoInicial" +
+					" LEFT OUTER JOIN condicaoInicial.etapa etapaInicial" +
 					" LEFT OUTER JOIN etapaInicial.fluxo fluxoInicial" +
-					" LEFT OUTER JOIN transicao.statusFinal statusFinal" +
-					" LEFT OUTER JOIN statusFinal.etapa etapaFinal" +
+					" LEFT OUTER JOIN transicao.condicaoFinal condicaoFinal" +
+					" LEFT OUTER JOIN condicaoFinal.etapa etapaFinal" +
 					" LEFT OUTER JOIN etapaFinal.fluxo fluxoFinal" +
-					" WHERE (statusInicial = :statusInicial" +
+					" WHERE (condicaoInicial = :condicaoInicial" +
 					"        OR fluxoInicial.id = :idFluxo)" +
 					"    AND fluxoFinal.id = :idFluxo" +
 					" ORDER BY transicao.id")
 					.setParameter("idFluxo", idFluxo)
-					.setParameter("statusInicial", Condicao.INITIAL_PSEUDO_STATE)
+					.setParameter("condicaoInicial", Condicao.INITIAL_PSEUDO_STATE)
 					.getResultList();
 			
 		} catch ( EmptyResultDataAccessException e ) {

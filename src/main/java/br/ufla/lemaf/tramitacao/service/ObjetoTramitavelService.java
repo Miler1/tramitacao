@@ -104,12 +104,12 @@ public class ObjetoTramitavelService {
 
 		ObjetoTramitavel objetoTramitavel = this.objetoTramitavelRepository.findById( idObjetoTramitavel );
 
-		if ( objetoTramitavel != null && objetoTramitavel.getStatus() != null ) {
+		if ( objetoTramitavel != null && objetoTramitavel.getCondicao() != null ) {
 
 			List<Acao> acoes = new ArrayList<Acao>();
 
 			List<Transicao> transicoes =
-					this.transicaoRepository.findByStatusInicial( objetoTramitavel.getStatus(), apenasAcoesTramitaveis );
+					this.transicaoRepository.findByCondicaoInicial( objetoTramitavel.getCondicao(), apenasAcoesTramitaveis );
 
 			for ( Transicao transicao : transicoes ) {
 
@@ -146,8 +146,8 @@ public class ObjetoTramitavelService {
 		return null;
 	}
 
-	public List<ObjetoTramitavel> findByIdStatus( Long idStatus ) {
-		return this.objetoTramitavelRepository.findByIdStatus( idStatus );
+	public List<ObjetoTramitavel> findByIdCondicao( Long idCondicao ) {
+		return this.objetoTramitavelRepository.findByIdCondicao( idCondicao );
 	}
 
 }

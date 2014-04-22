@@ -42,11 +42,11 @@ public class Transicao implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_CONDICAO_INICIAL", referencedColumnName = "ID_CONDICAO")
-	private Condicao statusInicial;
+	private Condicao condicaoInicial;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_CONDICAO_FINAL", referencedColumnName = "ID_CONDICAO")
-	private Condicao statusFinal;
+	private Condicao condicaoFinal;
 	
 	@Column(name = "DT_PRAZO")
 	private Integer prazo;
@@ -74,12 +74,12 @@ public class Transicao implements Serializable {
 		return acao;
 	}
 
-	public Condicao getStatusInicial() {
-		return statusInicial;
+	public Condicao getCondicaoInicial() {
+		return condicaoInicial;
 	}
 
-	public Condicao getStatusFinal() {
-		return statusFinal;
+	public Condicao getCondicaoFinal() {
+		return condicaoFinal;
 	}
 
 	public Integer getPrazo() {

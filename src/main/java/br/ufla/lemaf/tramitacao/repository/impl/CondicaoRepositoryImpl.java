@@ -10,10 +10,10 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Repository;
 
 import br.ufla.lemaf.tramitacao.model.Condicao;
-import br.ufla.lemaf.tramitacao.repository.StatusRepository;
+import br.ufla.lemaf.tramitacao.repository.CondicaoRepository;
 
 @Repository
-public class StatusRepositoryImpl implements StatusRepository {
+public class CondicaoRepositoryImpl implements CondicaoRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -23,8 +23,8 @@ public class StatusRepositoryImpl implements StatusRepository {
 
 		try {
 			
-			String jpql = "SELECT status FROM " + Condicao.class.getSimpleName()
-					+ " status INNER JOIN status.etapa e INNER JOIN e.fluxo f"
+			String jpql = "SELECT condicao FROM " + Condicao.class.getSimpleName()
+					+ " condicao INNER JOIN condicao.etapa e INNER JOIN e.fluxo f"
 					+ " WHERE f.id = " + idFluxo;
 
 			return (List<Condicao>) entityManager.createQuery(jpql).getResultList();

@@ -106,8 +106,8 @@ public class TramiteService {
 		
 		if ( transicaoInicial == null ) {
 
-			objetoTramitavel.setStatus( fluxo.getStatusInicial() );
-			objetoTramitavel.setEtapa( fluxo.getStatusInicial().getEtapa() );
+			objetoTramitavel.setCondicao( fluxo.getCondicaoInicial() );
+			objetoTramitavel.setEtapa( fluxo.getCondicaoInicial().getEtapa() );
 //			objetoTramitavel.setResponsavel ( responsavel );
 			
 			if (tramite.possuiUsuarioDestino())
@@ -117,7 +117,7 @@ public class TramiteService {
 			
 		} else {
 
-			objetoTramitavel.setStatus( Condicao.INITIAL_PSEUDO_STATE );
+			objetoTramitavel.setCondicao( Condicao.INITIAL_PSEUDO_STATE );
 			
 			objetoTramitavelService.save( objetoTramitavel );
 			
@@ -145,7 +145,7 @@ public class TramiteService {
 
 		} else {
 			
-			transicaoInicial = this.transicaoRepository.findByStatusInicialAndAcao( Condicao.INITIAL_PSEUDO_STATE, acao );
+			transicaoInicial = this.transicaoRepository.findByCondicaoInicialAndAcao( Condicao.INITIAL_PSEUDO_STATE, acao );
 			
 			ValidationUtil.idNotNull(transicaoInicial, String.format("A ação informada para iniciar a tramitação não é válida![idAcao=%d]" , acao.getId() ));
 		}
@@ -199,7 +199,7 @@ public class TramiteService {
 			//ResponsavelObjetoTramitavel responsavelDestino, 
 			String observacao ) {
 
-		Transicao transicao = transicaoRepository.findByStatusInicialAndAcao( objetoTramitavel.getStatus(), acao );
+		Transicao transicao = transicaoRepository.findByCondicaoInicialAndAcao( objetoTramitavel.getCondicao(), acao );
 
 		ValidationUtil.idNotNull( transicao, "A ação informada não está disponível para tramitação para esse objeto tramitável." );
 
@@ -215,15 +215,15 @@ public class TramiteService {
 
 		} else {
 			
-			objetoTramitavel.setStatus( transicao.getStatusFinal() );
+			objetoTramitavel.setCondicao( transicao.getCondicaoFinal() );
 			
 			setUsuarioDestino( objetoTramitavel, idUsuarioDestino );
 		}
 
 		historicoObjTramitavelService.save(new HistoricoObjTramitavel(objetoTramitavel,
 			transicao.getAcao(),
-			transicao.getStatusInicial(),
-			objetoTramitavel.getStatus(),
+			transicao.getCondicaoInicial(),
+			objetoTramitavel.getCondicao(),
 			usuarioExecutor,
 			objetoTramitavel.getUsuario(),
 			//objetoTramitavel.getResponsavel(),

@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.ufla.lemaf.tramitacao.model.Condicao;
 
-public interface StatusRepository {
+public interface CondicaoRepository {
 
 	List<Condicao> findByIdFluxo(Long idFluxo);
 	

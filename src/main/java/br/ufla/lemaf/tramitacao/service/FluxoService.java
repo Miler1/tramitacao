@@ -20,7 +20,7 @@ import br.ufla.lemaf.tramitacao.repository.TransicaoRepository;
 @Service
 public class FluxoService {
 	
-	private static final int MAX_LINE_SIZE_LABEL_STATUS_GRAPH = 18;
+	private static final int MAX_LINE_SIZE_LABEL_CONDICAO_GRAPH = 18;
 	
 	private final Log log =  LogFactory.getLog(getClass());
 
@@ -41,26 +41,26 @@ public class FluxoService {
 		if (transicoes == null || transicoes.isEmpty())
 			return null;
 		
-		Collection<Condicao> statusSet = getStatusFromTransicoes(transicoes);
+		Collection<Condicao> condicaoSet = getCondicaoFromTransicoes(transicoes);
 		
-		GraphViz graph = generateGraph(transicoes, statusSet, printDotFile);
+		GraphViz graph = generateGraph(transicoes, condicaoSet, printDotFile);
 
 		return graph.getGraph( graph.getDotSource(), GraphViz.OUTPUT_TYPE );
 	}
 	
-	private Collection<Condicao> getStatusFromTransicoes(List<Transicao> transicoes) {
+	private Collection<Condicao> getCondicaoFromTransicoes(List<Transicao> transicoes) {
 		
-		Set<Condicao> statusSet = new HashSet<Condicao>();
+		Set<Condicao> condicaoSet = new HashSet<Condicao>();
 		
 		for (Transicao transicao : transicoes) {
-			statusSet.add(transicao.getStatusInicial());
-			statusSet.add(transicao.getStatusFinal());
+			condicaoSet.add(transicao.getCondicaoInicial());
+			condicaoSet.add(transicao.getCondicaoFinal());
 		}
 		
-		return statusSet;
+		return condicaoSet;
 	}
 	
-	private GraphViz generateGraph(Collection<Transicao> transicoes, Collection<Condicao> statusList, boolean printDotFile) {
+	private GraphViz generateGraph(Collection<Transicao> transicoes, Collection<Condicao> condicaoList, boolean printDotFile) {
 		
 		GraphViz graph = new GraphViz();
 		graph.addln(graph.start_graph());
@@ -68,24 +68,24 @@ public class FluxoService {
 		// Estilos do grafico
 		graph.addln("bgcolor = \"#EEEEEE\";");		// cor de fundo
 		graph.addln("rankdir = LR;");				// direcao do grafico: esq > dir
-		graph.addln("node [color=orange, peripheries=2, fontname=Verdana, width=.75, regular=true];");	// estilo de cada status (no)
+		graph.addln("node [color=orange, peripheries=2, fontname=Verdana, width=.75, regular=true];");	// estilo de cada condicao (no)
 		graph.addln("edge [style=bold];");			// estilo das acoes (arestas)
 		
-		// Gera os status (nos)
-		for (Condicao status : statusList) {
+		// Gera os condicao (nos)
+		for (Condicao condicao : condicaoList) {
 			
-			String statusProp = (Condicao.INITIAL_PSEUDO_STATE.equals(status))
-					? "[color=green, label=\"" + splitLines(status.getNome(), MAX_LINE_SIZE_LABEL_STATUS_GRAPH) + "\"]" // estilo do status inicial
-					: "[label=\"" + splitLines(status.getNome(), MAX_LINE_SIZE_LABEL_STATUS_GRAPH) + "\"]";
+			String condicaoProp = (Condicao.INITIAL_PSEUDO_STATE.equals(condicao))
+					? "[color=green, label=\"" + splitLines(condicao.getNome(), MAX_LINE_SIZE_LABEL_CONDICAO_GRAPH) + "\"]" // estilo do condicao inicial
+					: "[label=\"" + splitLines(condicao.getNome(), MAX_LINE_SIZE_LABEL_CONDICAO_GRAPH) + "\"]";
 			
-			graph.addln("" + status.getId() + " " + statusProp + ";");
+			graph.addln("" + condicao.getId() + " " + condicaoProp + ";");
 		}
 		
 		// Gera as acoes (arestas)
 		for (Transicao transicao : transicoes) {
 			
-			graph.addln("" + transicao.getStatusInicial().getId() + " -> " + transicao.getStatusFinal().getId() +
-					" [label=\"" + splitLines(transicao.getAcao().getDescricao(), MAX_LINE_SIZE_LABEL_STATUS_GRAPH) + "\"];");
+			graph.addln("" + transicao.getCondicaoInicial().getId() + " -> " + transicao.getCondicaoFinal().getId() +
+					" [label=\"" + splitLines(transicao.getAcao().getDescricao(), MAX_LINE_SIZE_LABEL_CONDICAO_GRAPH) + "\"];");
 		}
 		
 		graph.addln(graph.end_graph());

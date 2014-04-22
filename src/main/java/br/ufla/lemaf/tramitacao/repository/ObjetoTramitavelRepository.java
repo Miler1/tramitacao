@@ -20,6 +20,6 @@ public interface ObjetoTramitavelRepository {
 
 	List<ObjetoTramitavel> findByIdFluxoAndIdUsuario(Long idFluxo, Long idUsuario);
 	
-	List<ObjetoTramitavel> findByIdStatus(Long idStatus);
+	List<ObjetoTramitavel> findByIdCondicao(Long idCondicao);
 	
 }

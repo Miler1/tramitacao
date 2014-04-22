@@ -98,7 +98,7 @@ public class ObjetoTramitavelRepositoryImpl implements ObjetoTramitavelRepositor
 	}
 
 	@SuppressWarnings( "unchecked" )
-	public List<ObjetoTramitavel> findByIdStatus( Long idStatus ) {
+	public List<ObjetoTramitavel> findByIdCondicao( Long idCondicao ) {
 		
 		try {
 
@@ -107,8 +107,8 @@ public class ObjetoTramitavelRepositoryImpl implements ObjetoTramitavelRepositor
 							"SELECT objetoTramitavel FROM "
 									+ ObjetoTramitavel.class.getSimpleName()
 									+ "  objetoTramitavel "
-									+ "WHERE objetoTramitavel.status.id = "
-									+ idStatus ).getResultList();
+									+ "WHERE objetoTramitavel.condicao.id = "
+									+ idCondicao ).getResultList();
 			return objetosTramitaveis;
 
 		} catch ( EmptyResultDataAccessException e ) {

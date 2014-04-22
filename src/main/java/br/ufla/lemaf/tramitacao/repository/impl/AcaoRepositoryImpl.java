@@ -45,11 +45,11 @@ public class AcaoRepositoryImpl implements AcaoRepository {
 			return (List<Acao>) this.entityManager.createQuery(
 					"SELECT acao FROM " + Transicao.class.getSimpleName() + " transicao" +
 						" INNER JOIN transicao.acao AS acao" +
-						" WHERE transicao.statusInicial = :statusInicial" +
-						"   AND transicao.statusInicial.ativo = :ativoStatusInicial" +
+						" WHERE transicao.condicaoInicial = :condicaoInicial" +
+						"   AND transicao.condicaoInicial.ativo = :ativoCondicaoInicial" +
 						"   AND transicao.acao.ativo = :ativoAcao"
-						).setParameter("statusInicial", objetoTramitavel.getStatus())
-						 .setParameter("ativoStatusInicial", SimNao.SIM )
+						).setParameter("condicaoInicial", objetoTramitavel.getCondicao())
+						 .setParameter("ativoCondicaoInicial", SimNao.SIM )
 						 .setParameter("ativoAcao", SimNao.SIM )
 						 .getResultList();
 			

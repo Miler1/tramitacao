@@ -18,7 +18,7 @@ public class CondicaoController {
 	@Autowired(required = true)
 	private CondicaoService condicaoService;
 	
-	// TODO Esse servico sera retirado no futuro, ele devera ser transformado em uma view com os status e fluxos
+	// TODO Esse servico sera retirado no futuro, ele devera ser transformado em uma view com os condicoes e fluxos
 	@RequestMapping(value = "/condicao/findByIdFluxo/{idFluxo}", method = RequestMethod.GET)
 	public List<Condicao> findByIdFluxo(@PathVariable Long idFluxo) {
 		return this.condicaoService.findByIdFluxo(idFluxo);

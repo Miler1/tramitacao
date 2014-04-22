@@ -48,7 +48,7 @@ public class ObjetoTramitavel implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "ID_CONDICAO", referencedColumnName = "ID_CONDICAO")
-	private Condicao status;
+	private Condicao condicao;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_ETAPA", referencedColumnName = "ID_ETAPA")
@@ -80,7 +80,7 @@ public class ObjetoTramitavel implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_CONDICAO_FLUXO_ANTERIOR", referencedColumnName = "ID_CONDICAO")
-	private Condicao statusFluxoAnterior;
+	private Condicao condicaoFluxoAnterior;
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_RESPONSAVEL_FLUXO_ANTERIOR", referencedColumnName = "IDT_USUARIO")
@@ -123,8 +123,8 @@ public class ObjetoTramitavel implements Serializable {
 		return id;
 	}
 
-	public Condicao getStatus() {
-		return status;
+	public Condicao getCondicao() {
+		return condicao;
 	}
 
 	public Etapa getEtapa() {
@@ -160,19 +160,19 @@ public class ObjetoTramitavel implements Serializable {
 		this.id = id;
 	}
 
-	public void setStatus(Condicao novoStatus) {
+	public void setCondicao(Condicao novaCondicao) {
 		
-		boolean alterouFluxo = this.status != null && this.status.isStatusOutroFluxo(novoStatus);
+		boolean alterouFluxo = this.condicao != null && this.condicao.isCondicaoOutroFluxo(novaCondicao);
 		
 		if (alterouFluxo) {
 			
-			this.setStatusFluxoAnterior(this.status);
+			this.setCondicaoFluxoAnterior(this.condicao);
 			this.setResponsavelFluxoAnterior(this.usuario);
 		}
 		
-		this.status = novoStatus;
-		this.etapa = novoStatus.getEtapa();
-		this.fluxo = (novoStatus.getEtapa() != null) ? novoStatus.getEtapa().getFluxo() : null;
+		this.condicao = novaCondicao;
+		this.etapa = novaCondicao.getEtapa();
+		this.fluxo = (novaCondicao.getEtapa() != null) ? novaCondicao.getEtapa().getFluxo() : null;
 	}
 
 	public void setEtapa(Etapa etapa) {
@@ -215,12 +215,12 @@ public class ObjetoTramitavel implements Serializable {
 		this.responsavelAnterior = responsavelAnterior;
 	}
 
-	public Condicao getStatusFluxoAnterior() {
-		return statusFluxoAnterior;
+	public Condicao getCondicaoFluxoAnterior() {
+		return condicaoFluxoAnterior;
 	}
 
-	public void setStatusFluxoAnterior(Condicao statusFluxoAnterior) {
-		this.statusFluxoAnterior = statusFluxoAnterior;
+	public void setCondicaoFluxoAnterior(Condicao condicaoFluxoAnterior) {
+		this.condicaoFluxoAnterior = condicaoFluxoAnterior;
 	}
 
 	public Usuario getResponsavelFluxoAnterior() {
@@ -319,10 +319,10 @@ public class ObjetoTramitavel implements Serializable {
 	
 	public void setObjetoParaRetornarParaFluxoAnterior() {
 		
-		Condicao novoStatus = this.statusFluxoAnterior;
+		Condicao novaCondicao = this.condicaoFluxoAnterior;
 		Usuario novoResponsavel = this.responsavelFluxoAnterior;
 		
-		setStatus(novoStatus);
+		setCondicao(novaCondicao);
 		setUsuario(novoResponsavel);
 		
 //		if (responsavel != null)

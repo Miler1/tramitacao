@@ -11,11 +11,11 @@ public interface TransicaoRepository {
 	
 	Transicao findTransicaoInicial(Fluxo fluxo);
 	
-	Transicao findByStatusInicialAndAcao(Condicao statusInicial, Acao acao);
+	Transicao findByCondicaoInicialAndAcao(Condicao condicaoInicial, Acao acao);
 	
-	List<Transicao> findByStatusInicial(Condicao statusInicial, Integer apenasAcoesTramitaveis);
+	List<Transicao> findByCondicaoInicial(Condicao condicaoInicial, Integer apenasAcoesTramitaveis);
 	
-	List<Transicao> findBy(Condicao statusInicial, Acao acao, Integer apenasAcoesTramitaveis);
+	List<Transicao> findBy(Condicao condicaoInicial, Acao acao, Integer apenasAcoesTramitaveis);
 
 	List<Transicao> findByIdFluxo(Long idFluxo);
 }

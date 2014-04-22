@@ -66,12 +66,12 @@ public class Condicao implements Serializable {
 		return ativo;
 	}
 	
-	public boolean isStatusOutroFluxo(Condicao novoStatus) {
+	public boolean isCondicaoOutroFluxo(Condicao novaCondicao) {
 		
-		if (this.etapa == null || novoStatus == null || novoStatus.getEtapa() == null)
+		if (this.etapa == null || novaCondicao == null || novaCondicao.getEtapa() == null)
 			return false;
 		
-		return this.etapa.isEtapaOutroFluxo( novoStatus.getEtapa() );
+		return this.etapa.isEtapaOutroFluxo( novaCondicao.getEtapa() );
 	}
 
 	@Override

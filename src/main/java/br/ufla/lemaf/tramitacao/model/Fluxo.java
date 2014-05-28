@@ -32,7 +32,7 @@ public class Fluxo implements Serializable {
 	private Long id;
 	
 	@OneToOne
-	@JoinColumn(name = "ID_STATUS_INICIAL", referencedColumnName = "ID_CONDICAO")
+	@JoinColumn(name = "ID_CONDICAO_INICIAL", referencedColumnName = "ID_CONDICAO")
 	private Condicao statusInicial;
 	
 	@Column(name = "TX_DESCRICAO")

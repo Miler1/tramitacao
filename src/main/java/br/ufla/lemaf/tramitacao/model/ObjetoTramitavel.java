@@ -67,7 +67,7 @@ public class ObjetoTramitavel implements Serializable {
 	private Date dataCriacao;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "IDT_USUARIO")
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO")
 	private Usuario usuario;
 
 	@ManyToOne
@@ -75,7 +75,7 @@ public class ObjetoTramitavel implements Serializable {
 	private ObjetoTramitavel pai;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_RESPONSAVEL_ANTERIOR", referencedColumnName = "IDT_USUARIO")
+	@JoinColumn(name = "ID_RESPONSAVEL_ANTERIOR", referencedColumnName = "ID_USUARIO")
 	private Usuario responsavelAnterior;
 	
 	@ManyToOne
@@ -83,7 +83,7 @@ public class ObjetoTramitavel implements Serializable {
 	private Condicao statusFluxoAnterior;
 	
 	@ManyToOne
-	@JoinColumn(name = "ID_RESPONSAVEL_FLUXO_ANTERIOR", referencedColumnName = "IDT_USUARIO")
+	@JoinColumn(name = "ID_RESPONSAVEL_FLUXO_ANTERIOR", referencedColumnName = "ID_USUARIO")
 	private Usuario responsavelFluxoAnterior;
 
 	@ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)

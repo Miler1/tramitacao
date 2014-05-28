@@ -16,18 +16,18 @@ import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table(name = "USUARIO", catalog = "", schema = SCHEMAS.USR_GEOCAR_APLICACAO)
+@Table(name = "USUARIO", catalog = "", schema = SCHEMAS.PORTAL_SEGURANCA)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "IDT_USUARIO")
+	@Column(name = "ID_USUARIO")
 	@NotNull
 	private Long id;
 
 	@OneToOne
-	@JoinColumn(name = "IDT_PESSOA")
+	@JoinColumn(name = "ID_PESSOA")
 	private Pessoa pessoa;
 
 	public Usuario() {

@@ -11,17 +11,17 @@ import javax.validation.constraints.NotNull;
 import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
-@Table(name = "PESSOA", catalog = "", schema = SCHEMAS.USR_GEOCAR_APLICACAO)
+@Table(name = "PESSOA", catalog = "", schema = SCHEMAS.PORTAL_SEGURANCA)
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "IDT_PESSOA")
+	@Column(name = "ID_PESSOA")
 	@NotNull
 	private Long idPessoa;
 	
-	@Column(name = "NOM_RAZAO_SOCIAL")
+	@Column(name = "NM_PESSOA")
 	@NotNull
 	private String nomeRazaoSocial;
 	

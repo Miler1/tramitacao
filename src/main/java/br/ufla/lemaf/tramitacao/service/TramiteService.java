@@ -302,24 +302,6 @@ public class TramiteService {
 		ValidationUtil.notNull( tramite, "Nenhum campo foi informado para iniciar a tramitação." );
 		ValidationUtil.notNull( tramite.getIdFluxo(), "O identificador do fluxo de tramitação não foi informado corretamente." );
 		ValidationUtil.notNull( tramite.getIdTipoObjetoTramitavel(), "O identificador do tipo do objeto tramitável não foi informado corretamente." );
-
-		if ( !tramite.possuiUsuarioDestino() && !tramite.possuiGrupoUsuarioDestino()
-				&& !tramite.possuiUnidadeAdmDestino() && !tramite.possuiOrgaoDestino() )
-			throw new TramiteRequestException( "O identificador do responsável pelo objeto tramitável não foi informado." );
-		
-		if ( tramite.possuiUsuarioDestino() && ( tramite.possuiGrupoUsuarioDestino()
-				|| tramite.possuiUnidadeAdmDestino() || tramite.possuiOrgaoDestino() ) )
-			throw new TramiteRequestException( "Caso o usuário interno responsável for informado, " +
-					"não é possível informar grupo de usuário, unidade administrativa ou órgão responsáveis." );
-
-		if ( tramite.possuiUnidadeAdmDestino() && tramite.possuiOrgaoDestino() )
-			throw new TramiteRequestException( "Não é possível informar unidade administrativa e órgão juntos como responsáveis pelo objeto." );
-		
-		if ( tramite.possuiUsuarioDestino() ) {
-			
-			Usuario usuarioResponsavel = usuarioInternoRepository.findById( tramite.getIdUsuarioDestino() );
-			ValidationUtil.idNotNull( usuarioResponsavel, "Não foi possível encontrar o usuário responsável informado." );
-		}
 	}
 	
 //	@Transactional

@@ -345,10 +345,12 @@ public class TramiteService {
 		ValidationUtil.notNull( tramite, "Nenhum campo foi informado para tramitação." );
 		ValidationUtil.notNull( tramite.getIdObjetoTramitavel(), "O identificador do objeto a ser tramitado não foi informado corretamente." );
 		ValidationUtil.notNull( tramite.getIdAcao(), "O identificador da ação a ser executada não foi informado corretamente." );
-		ValidationUtil.notNull( tramite.getIdUsuarioExecutor(), "O identificador do usuário executor não foi informado corretamente." );
-		
-		Usuario usuarioExecutor = usuarioInternoRepository.findById( tramite.getIdUsuarioExecutor() );
-		ValidationUtil.idNotNull( usuarioExecutor, "Não foi possível encontrar o usuário responsável executor informado." );
+//		ValidationUtil.notNull( tramite.getIdUsuarioExecutor(), "O identificador do usuário executor não foi informado corretamente." );
+
+		if(tramite.getIdUsuarioExecutor() != null) {
+			Usuario usuarioExecutor = usuarioInternoRepository.findById( tramite.getIdUsuarioExecutor() );
+			ValidationUtil.idNotNull( usuarioExecutor, "Não foi possível encontrar o usuário responsável executor informado." );
+		}
 		
 		if ( tramite.possuiUsuarioDestino() && ( tramite.possuiGrupoUsuarioDestino()
 				|| tramite.possuiUnidadeAdmDestino() || tramite.possuiOrgaoDestino() ) )

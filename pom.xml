@@ -4,7 +4,7 @@
   <groupId>br.ufla.lemaf</groupId>
   <artifactId>Tramitacao</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.2</version>
   <name>Tramitacao Web</name>
   <url>http://maven.apache.org</url>
   
@@ -416,7 +416,7 @@
     
   </dependencies>
   <build>
-    <finalName>mbwy</finalName>
+    <finalName>Tramitacao</finalName>
     <pluginManagement>
     <plugins>
       <plugin>

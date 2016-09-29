@@ -416,7 +416,7 @@
     
   </dependencies>
   <build>
-    <finalName>Tramitacao</finalName>
+    <finalName>TramitacaoAC</finalName>
     <pluginManagement>
     <plugins>
       <plugin>

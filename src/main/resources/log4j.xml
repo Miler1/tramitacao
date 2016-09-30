@@ -11,8 +11,29 @@
 		</layout>
 	</appender>
 
-	<appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
+	<!-- File Appender - Local -->
+	<appender name="LOCAL" class="org.apache.log4j.DailyRollingFileAppender">
 	    <param name="File" value="${catalina.base}/logs/TramitacaoRS.log" />
+	    <param name="DatePattern" value="'.'yyyy-MM-dd" />
+	    <param name="Append" value="true" />
+	    <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss} %-5p [%t]: %c - %m%n"/>
+	    </layout>
+	</appender>
+
+	<!-- File Appender - Testes JAVA 1 -->
+	<appender name="JAVA1TEST" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="File" value="/var/log/application/test-car-rs-tramitacao.log" />
+	    <param name="DatePattern" value="'.'yyyy-MM-dd" />
+	    <param name="Append" value="true" />
+	    <layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss} %-5p [%t]: %c - %m%n"/>
+	    </layout>
+	</appender>
+	
+	<!-- File Appender - Apresentação -->
+	<appender name="PRESENTATION" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="File" value="/var/log/application/presentation-car-rs-tramitacao.log" />
 	    <param name="DatePattern" value="'.'yyyy-MM-dd" />
 	    <param name="Append" value="true" />
 	    <layout class="org.apache.log4j.PatternLayout">
@@ -48,8 +69,10 @@
 	<!-- Root Logger -->
 	<root>
 		<priority value="info" />
-<!-- 		<appender-ref ref="console" /> -->
-		<appender-ref ref="FILE" />
+		<!-- <appender-ref ref="console" /> -->
+		<!-- <appender-ref ref="LOCAL" /> -->
+		<!-- <appender-ref ref="JAVA1TEST" /> -->
+		<appender-ref ref="PRESENTATION" />
 	</root>
 
 </log4j:configuration>

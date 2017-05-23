@@ -43,12 +43,12 @@
 	<repository>
 		<id>lemaf.ufla.br</id>
 		<name>Lemaf Public Repository</name>
-		<url>http://lemaf.ufla.br/nexus/content/groups/public/</url>
+		<url>http://repo.ti.lemaf.ufla.br/repository/public/</url>
 	</repository> 
 	<repository>
 		<id>lemaf-snapshots</id>
 		<name>Lemaf Snapshots Repository</name>
-		<url>http://lemaf.ufla.br/nexus/content/repositories/snapshots/</url>
+		<url>http://repo.ti.lemaf.ufla.br/repository/snapshots/</url>
 	</repository>
     
   </repositories>

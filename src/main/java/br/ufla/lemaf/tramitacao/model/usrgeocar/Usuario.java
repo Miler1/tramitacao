@@ -22,7 +22,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "ID_USUARIO")
+	@Column(name = "ID")
 	@NotNull
 	private Long id;
 

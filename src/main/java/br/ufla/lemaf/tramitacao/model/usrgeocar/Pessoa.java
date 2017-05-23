@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
-@Table(name = "PESSOA", catalog = "", schema = SCHEMAS.PORTAL_SEGURANCA)
+@Table(name = "PESSOA_FISICA", catalog = "", schema = SCHEMAS.LICENCIAMENTO)
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,7 +21,7 @@ public class Pessoa implements Serializable {
 	@NotNull
 	private Long idPessoa;
 	
-	@Column(name = "NM_PESSOA")
+	@Column(name = "NOME")
 	@NotNull
 	private String nomeRazaoSocial;
 	

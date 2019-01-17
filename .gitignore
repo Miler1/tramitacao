@@ -8,3 +8,6 @@
 /.classpath
 /bin
 /.metadata
+.idea/*
+*.xml
+src/.idea/*

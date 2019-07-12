@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
-@Table(name = "PESSOA_FISICA", catalog = "", schema = SCHEMAS.LICENCIAMENTO)
+@Table(name = "PESSOA", catalog = "", schema = SCHEMAS.ANALISE)
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;

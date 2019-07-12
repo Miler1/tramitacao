@@ -394,7 +394,7 @@
     <dependency>
         <groupId>br.ufla.lemaf</groupId>
         <artifactId>InterfaceTramitacao</artifactId>
-        <version>0.3.4-SNAPSHOT</version>
+        <version>0.3.5-SNAPSHOT</version>
         <type>jar</type>
         <scope>compile</scope>
     </dependency>

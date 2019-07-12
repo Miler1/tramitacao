@@ -16,7 +16,7 @@ import br.ufla.lemaf.tramitacao.consts.SCHEMAS;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Table(name = "USUARIO", catalog = "", schema = SCHEMAS.PORTAL_SEGURANCA)
+@Table(name = "USUARIO_ANALISE", catalog = "", schema = SCHEMAS.ANALISE)
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;

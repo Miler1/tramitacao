@@ -1,13 +1,15 @@
+<!DOCTYPE html>
+
 <html>
 	<body>
-		<h2>TramitaÁ„o - An·lise Car Nacional</h2>
-		<h3>Controle de Vers„o</h3>
+		<h2>Tramita√ß√£o Licenciamento Ambiental - AM</h2>
+		<h3>Controle de Vers√£o</h3>
 		<h4>
-			<label>Ambiente:</label>&nbsp;<font color="red">HomologaÁ„o</font>
+			<label>Ambiente:</label>&nbsp;<font color="red">Teste/Homologa√ß√£o/Produ√ß√£o</font>
 			<br/>
-			<label>Vers„o:</label>&nbsp;<font color="red">1.0.2</font>
+			<label>Vers√£o:</label>&nbsp;<font color="red">1.0.0</font>
 			<br/>
-			<label>Data:</label>&nbsp;<font color="red">04/12/2014</font>
+			<label>Data:</label>&nbsp;<font color="red">18/01/2019</font>
 		</h4>
 	</body>
 </html>

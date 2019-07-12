@@ -2,10 +2,10 @@
 
 <html>
 	<body>
-		<h2>Tramitação Licenciamento Ambiental - AM</h2>
-		<h3>Controle de Versão</h3>
+		<h2>Tramitacao Licenciamento Ambiental - AM</h2>
+		<h3>Controle de Versao</h3>
 		<h4>
-			<label>Ambiente:</label>&nbsp;<font color="red">Teste/Homologação/Produção</font>
+			<label>Ambiente:</label>&nbsp;<font color="red">Teste/Homologacao/Producao</font>
 			<br/>
 			<label>Versão:</label>&nbsp;<font color="red">1.0.0</font>
 			<br/>
